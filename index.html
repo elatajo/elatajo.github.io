@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>El Atajo — Resuelve con IA y recupera tu tiempo</title>
+  
+  <!-- FAVICON VECTORIAL OFICIAL -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2313151A' stroke='%23232732' stroke-width='1.5'/><path d='M10 22L22 10M22 10H14M22 10V18' stroke='%2338BDF8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -55,10 +58,10 @@
       height: 100vh;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.6;
+      opacity: 0.35;
     }
     .glass-nav {
-      background: rgba(11, 12, 14, 0.8);
+      background: rgba(11, 12, 14, 0.75);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
     }
@@ -89,7 +92,7 @@
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(24px);
       }
       to {
         opacity: 1;
@@ -97,7 +100,7 @@
       }
     }
     .animate-fade-in-up {
-      animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
   </style>
 </head>
@@ -106,49 +109,87 @@
 
   <canvas id="webgl-canvas"></canvas>
 
-  <header class="glass-nav border-b border-brand-border/60 sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+  <!-- HEADER -->
+  <header class="glass-nav border-b border-brand-border/60 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       
-      <div class="flex items-center gap-3">
-        <div class="h-8 w-8 rounded-lg bg-zinc-900 border border-brand-border flex items-center justify-center shadow-inner">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="h-8 w-8 rounded-lg bg-zinc-900 border border-brand-border flex items-center justify-center shadow-inner group-hover:border-sky-500/50 transition-colors">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M5 19L19 5M19 5H9M19 5V15" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <span class="text-sm font-semibold tracking-tight text-white">
+        <span class="text-sm font-bold tracking-tight text-white group-hover:text-sky-400 transition-colors">
           El Atajo
         </span>
-      </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-medium text-slate-400">
+        <a href="#catalogo" class="hover:text-white transition-colors">Catálogo de Flujos</a>
+        <a href="#calculadora" class="hover:text-white transition-colors">Calculadora de Horas</a>
+        <a href="#manifiesto" class="hover:text-white transition-colors">El Manifiesto</a>
+      </nav>
 
       <div class="flex items-center gap-4">
-        <div class="hidden sm:flex items-center gap-2 border border-brand-border bg-brand-pill px-3 py-1 rounded-full text-xs font-medium text-slate-300">
+        <div class="hidden sm:flex items-center gap-2 border border-brand-border bg-brand-pill px-3 py-1 rounded-full text-[11px] font-medium text-slate-300">
           <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>Actualizado semanalmente</span>
         </div>
-        <a href="#manifiesto" class="hidden md:inline text-xs font-medium text-slate-400 hover:text-white transition-colors">
-          Manifiesto
-        </a>
-        <a href="#catalogo" class="text-xs font-semibold px-4 py-2 rounded-lg bg-white text-black hover:bg-slate-200 transition-colors shadow-sm">
-          Ver Catálogo
+        <a href="#catalogo" class="text-xs font-bold px-4 py-2 rounded-xl bg-white text-black hover:bg-sky-400 hover:text-black transition-all shadow-sm">
+          Explorar Atajos
         </a>
       </div>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-6 pt-16 pb-28 flex-1 w-full relative z-10">
+<!-- HERO SECTION FULL-BLEED -->
+  <section class="relative w-full min-h-[75vh] md:min-h-[82vh] flex items-center justify-center overflow-hidden border-b border-brand-border/60 bg-zinc-950">
+    
+    <!-- IMAGEN DE FONDO PANORÁMICA BLINDADA -->
+    <div class="absolute inset-0 w-full h-full overflow-hidden">
+      <img 
+        src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=2000&q=80" 
+        alt="" 
+        referrerpolicy="no-referrer"
+        class="w-full h-full object-cover object-center filter brightness-50 contrast-125 scale-105"
+      >
+      <!-- CAPAS DE GRADIENTE PARA CONTRASTE PERFECTO -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0B0C0E] via-[#0B0C0E]/70 to-[#0B0C0E]/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0B0C0E]/60 via-transparent to-[#0B0C0E]/60"></div>
+    </div>
 
-    <section class="max-w-3xl mb-16 animate-fade-in-up">
-      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.08] mb-6">
+    <!-- TEXTO MONTADO SOBRE LA IMAGEN -->
+    <div class="relative z-20 max-w-5xl mx-auto px-6 py-20 text-center animate-fade-in-up">
+      
+      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white leading-[1.04] mb-6 drop-shadow-2xl">
         Toma el atajo. <br />
-        <span class="text-slate-500">Resuelve con IA y recupera tu tiempo.</span>
+        <span class="bg-gradient-to-r from-sky-400 via-slate-200 to-slate-400 bg-clip-text text-transparent">
+          Resuelve con IA y recupera tu tiempo.
+        </span>
       </h1>
-      <p class="text-slate-400 text-lg leading-relaxed max-w-2xl font-normal">
+      
+      <p class="text-slate-300 text-base sm:text-xl leading-relaxed max-w-2xl mx-auto font-normal mb-10 drop-shadow-lg">
         Fórmulas exactas para salir de ensayos, análisis de documentos densos y desorden de datos en minutos. Cero palabreo conceptual. Pura ejecución.
       </p>
-    </section>
+
+      <div class="flex flex-wrap justify-center items-center gap-4">
+        <a href="#catalogo" class="px-7 py-3.5 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-black text-xs sm:text-sm font-bold transition-all shadow-xl shadow-sky-500/20 active:scale-95">
+          Ver los 6 Atajos Disponibles
+        </a>
+        <a href="#calculadora" class="px-7 py-3.5 rounded-xl bg-black/60 hover:bg-black/80 backdrop-blur-md text-white text-xs sm:text-sm font-semibold border border-white/20 transition-all active:scale-95">
+          Calcular Horas Ahorradas
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTENEDOR PRINCIPAL RESTRINGIDO PARA EL RESTO DE LA PÁGINA -->
+  <main class="max-w-7xl mx-auto px-6 pt-20 pb-28 flex-1 w-full relative z-10">
 
     <!-- CALCULADORA DE TIEMPO INTERACTIVA -->
-    <section class="mb-20 p-8 rounded-3xl bg-brand-surface/60 border border-brand-border/80 backdrop-blur-xl animate-fade-in-up" style="animation-delay: 0.15s;">
+    <section id="calculadora" class="mb-24 p-8 rounded-3xl bg-brand-surface/60 border border-brand-border/80 backdrop-blur-xl">
       <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center justify-between">
         <div class="max-w-md">
           <span class="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">Simulador de Ahorro</span>
@@ -192,7 +233,7 @@
     </section>
 
     <!-- BARRA DE BÚSQUEDA Y FILTROS -->
-    <section id="catalogo" class="space-y-6 mb-12 animate-fade-in-up" style="animation-delay: 0.25s;">
+    <section id="catalogo" class="space-y-6 mb-12">
       <div class="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
         <div class="relative flex-1 max-w-md">
           <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -236,7 +277,7 @@
       </p>
     </div>
 
-    <!-- SECCIÓN: EL MANIFIESTO (OPCIÓN B) -->
+    <!-- SECCIÓN: EL MANIFIESTO -->
     <section id="manifiesto" class="pt-16 pb-8 border-t border-brand-border/60">
       <div class="max-w-3xl mb-12">
         <span class="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">El Manifiesto</span>
@@ -284,8 +325,9 @@
 
   </main>
 
+  <!-- FOOTER -->
   <footer class="border-t border-brand-border/60 bg-brand-surface/40 py-12 relative z-10">
-    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-slate-500">
       <div class="flex items-center gap-3">
         <span class="font-semibold text-slate-300">El Atajo</span>
         <span>—</span>
