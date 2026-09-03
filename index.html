@@ -125,6 +125,9 @@
           <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>Actualizado semanalmente</span>
         </div>
+        <a href="#manifiesto" class="hidden md:inline text-xs font-medium text-slate-400 hover:text-white transition-colors">
+          Manifiesto
+        </a>
         <a href="#catalogo" class="text-xs font-semibold px-4 py-2 rounded-lg bg-white text-black hover:bg-slate-200 transition-colors shadow-sm">
           Ver Catálogo
         </a>
@@ -224,14 +227,60 @@
     </section>
 
     <!-- GRID DE WORKFLOWS -->
-    <section id="workflows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section id="workflows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
     </section>
 
-    <div id="empty-state" class="hidden text-center py-24 border border-dashed border-brand-border rounded-2xl">
+    <div id="empty-state" class="hidden text-center py-24 border border-dashed border-brand-border rounded-2xl mb-24">
       <p class="text-slate-400 font-medium text-sm">
         No hay flujos disponibles para este criterio de búsqueda.
       </p>
     </div>
+
+    <!-- SECCIÓN: EL MANIFIESTO (OPCIÓN B) -->
+    <section id="manifiesto" class="pt-16 pb-8 border-t border-brand-border/60">
+      <div class="max-w-3xl mb-12">
+        <span class="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">El Manifiesto</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-2 mb-4">
+          No es hacer trampa. <br />
+          <span class="text-slate-500">Es dejar de perder el tiempo en lo mecánico.</span>
+        </h2>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          La educación superior está repleta de tareas repetitivas que consumen noches enteras sin desarrollar criterio real. El Atajo nació para desmitificar la inteligencia artificial y convertirla en una palanca de apalancamiento intelectual, no en un sustituto del pensamiento crítico.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
+          <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
+            01
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Tiempo sobre teoría</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Aprender la historia de las redes neuronales no te devuelve las 4 horas que pierdes formateando un documento o extrayendo datos rotos. Priorizamos la utilidad inmediata sobre el palabreo abstracto.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
+            02
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Criterio antes que copia</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Prohibido usar IA para redactar textos genéricos que nadie quiere leer. Diseñamos protocolos donde el modelo actúa como un evaluador implacable y analista de soporte. El juicio final siempre es del estudiante.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
+          <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
+            03
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">Acceso abierto y directo</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Sin suscripciones, sin muros de registro y sin cursos de venta de humo. Protocolos claros, probados en entornos reales y listos para ejecutar en un clic.
+          </p>
+        </div>
+      </div>
+    </section>
 
   </main>
 
@@ -286,7 +335,6 @@
         </div>
       </div>
 
-      <!-- FOOTER DEL MODAL ACTUALIZADO: HERRAMIENTA + ENLACE DINÁMICO + BOTÓN COPIAR -->
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-2 border-t border-brand-border/60">
         <div class="flex flex-col sm:flex-row sm:items-center gap-3">
           <span id="modal-tool" class="text-xs text-slate-400 font-mono"></span>
@@ -529,8 +577,6 @@ Transcripción cruda:
       modalTool.textContent = `Herramienta: ${currentSelectedWf.recommendedModel}`;
       modalSlowTime.textContent = `~${currentSelectedWf.slowTime}`;
       modalFastTime.textContent = `~${currentSelectedWf.fastTime}`;
-      
-      // Enlace dinámico al archivo HTML correspondiente
       modalGuideLink.href = currentSelectedWf.url || '#';
       
       modalCopyBtn.onclick = () => {
