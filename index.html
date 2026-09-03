@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Atajo — Resuelve con IA y recupera tu tiempo</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              background: '#0B0C0E',
+              surface: '#13151A',
+              card: '#181B22',
+              border: '#232732',
+              accent: '#38BDF8',
+              accentHover: '#0EA5E9',
+              pill: '#1E222D'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0B0C0E;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection {
+      background-color: #38BDF8;
+      color: #0B0C0E;
+    }
+    #webgl-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+    .glass-nav {
+      background: rgba(11, 12, 14, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .card-sheen {
+      position: relative;
+      overflow: hidden;
+    }
+    .card-sheen::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        transparent,
+        rgba(255, 255, 255, 0.03),
+        transparent
+      );
+      transform: rotate(25deg) translateY(-100%);
+      transition: transform 0.75s ease;
+      pointer-events: none;
+    }
+    .card-sheen:hover::after {
+      transform: rotate(25deg) translateY(100%);
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in-up {
+      animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+
+<body class="text-slate-100 min-h-screen flex flex-col font-sans relative overflow-x-hidden">
+
+  <canvas id="webgl-canvas"></canvas>
+
+  <header class="glass-nav border-b border-brand-border/60 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      
+      <div class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-lg bg-zinc-900 border border-brand-border flex items-center justify-center shadow-inner">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 19L19 5M19 5H9M19 5V15" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="text-sm font-semibold tracking-tight text-white">
+          El Atajo
+        </span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div class="hidden sm:flex items-center gap-2 border border-brand-border bg-brand-pill px-3 py-1 rounded-full text-xs font-medium text-slate-300">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Actualizado semanalmente</span>
+        </div>
+        <a href="#catalogo" class="text-xs font-semibold px-4 py-2 rounded-lg bg-white text-black hover:bg-slate-200 transition-colors shadow-sm">
+          Ver Catálogo
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 pt-16 pb-28 flex-1 w-full relative z-10">
+
+    <section class="max-w-3xl mb-16 animate-fade-in-up">
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.08] mb-6">
+        Toma el atajo. <br />
+        <span class="text-slate-500">Resuelve con IA y recupera tu tiempo.</span>
+      </h1>
+      <p class="text-slate-400 text-lg leading-relaxed max-w-2xl font-normal">
+        Fórmulas exactas para salir de ensayos, análisis de documentos densos y desorden de datos en minutos. Cero palabreo conceptual. Pura ejecución.
+      </p>
+    </section>
+
+    <!-- CALCULADORA DE TIEMPO INTERACTIVA -->
+    <section class="mb-20 p-8 rounded-3xl bg-brand-surface/60 border border-brand-border/80 backdrop-blur-xl animate-fade-in-up" style="animation-delay: 0.15s;">
+      <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center justify-between">
+        <div class="max-w-md">
+          <span class="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">Simulador de Ahorro</span>
+          <h2 class="text-2xl font-bold text-white mt-1 mb-2">Calcula tus horas recuperadas</h2>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Indica cuántas tareas mecánicas tienes al mes para proyectar el tiempo que puedes devolverle a tu vida usando estos flujos.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:w-auto">
+          <div class="p-4 rounded-xl bg-brand-card border border-brand-border">
+            <label class="block text-xs text-slate-400 mb-2 font-medium">Papers / Lecturas por mes</label>
+            <input id="calc-papers" type="range" min="1" max="15" value="4" class="w-full accent-sky-400 cursor-pointer">
+            <div class="flex justify-between text-xs font-mono mt-1 text-slate-400">
+              <span>1</span>
+              <span id="calc-papers-val" class="text-white font-bold">4</span>
+              <span>15</span>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-brand-card border border-brand-border">
+            <label class="block text-xs text-slate-400 mb-2 font-medium">Ensayos o Informes por mes</label>
+            <input id="calc-essays" type="range" min="1" max="8" value="2" class="w-full accent-sky-400 cursor-pointer">
+            <div class="flex justify-between text-xs font-mono mt-1 text-slate-400">
+              <span>1</span>
+              <span id="calc-essays-val" class="text-white font-bold">2</span>
+              <span>8</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full lg:w-48 text-left lg:text-right border-t lg:border-t-0 lg:border-l border-brand-border pt-4 lg:pt-0 lg:pl-6">
+          <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Ahorro Estimado</div>
+          <div class="text-4xl font-extrabold text-sky-400 mt-1 flex items-baseline lg:justify-end gap-1">
+            <span id="calculated-hours">11.5</span>
+            <span class="text-sm font-medium text-slate-400">hrs/mes</span>
+          </div>
+          <div class="text-[11px] text-emerald-400 mt-1 font-medium">~1.5 días libres ganados</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BARRA DE BÚSQUEDA Y FILTROS -->
+    <section id="catalogo" class="space-y-6 mb-12 animate-fade-in-up" style="animation-delay: 0.25s;">
+      <div class="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
+        <div class="relative flex-1 max-w-md">
+          <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Buscar por tarea: 'ensayos', 'auditoría', 'resumen', 'datos'..."
+            class="w-full pl-10 pr-4 py-2.5 bg-brand-surface border border-brand-border rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all"
+          />
+        </div>
+
+        <div id="category-filters" class="flex flex-wrap gap-2">
+          <button data-cat="Todos" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-white text-black font-semibold shadow-sm">
+            Todos
+          </button>
+          <button data-cat="Escritura" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white">
+            Escritura
+          </button>
+          <button data-cat="Investigación" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white">
+            Investigación
+          </button>
+          <button data-cat="Estudio" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white">
+            Estudio
+          </button>
+          <button data-cat="Automatización" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white">
+            Automatización
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID DE WORKFLOWS -->
+    <section id="workflows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    </section>
+
+    <div id="empty-state" class="hidden text-center py-24 border border-dashed border-brand-border rounded-2xl">
+      <p class="text-slate-400 font-medium text-sm">
+        No hay flujos disponibles para este criterio de búsqueda.
+      </p>
+    </div>
+
+  </main>
+
+  <footer class="border-t border-brand-border/60 bg-brand-surface/40 py-12 relative z-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-slate-500">
+      <div class="flex items-center gap-3">
+        <span class="font-semibold text-slate-300">El Atajo</span>
+        <span>—</span>
+        <span>Plataforma de eficiencia académica mediante IA</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Sin registros</span>
+        <span class="h-1 w-1 rounded-full bg-slate-700"></span>
+        <span>100% de libre acceso</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DE FLUJO COMPLETO -->
+  <div id="modal-container" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-brand-surface border border-brand-border rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex justify-between items-start pb-4 mb-6 border-b border-brand-border">
+        <div>
+          <span id="modal-category" class="text-[11px] font-mono uppercase tracking-wider text-sky-400 font-semibold"></span>
+          <h3 id="modal-title" class="text-xl font-bold text-white mt-1"></h3>
+        </div>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-brand-card">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 mb-6 p-4 rounded-xl bg-brand-card border border-brand-border">
+        <div>
+          <span class="text-[10px] uppercase font-mono text-slate-500 tracking-wider">El Camino Largo</span>
+          <p id="modal-slow-time" class="text-sm font-semibold text-rose-400 mt-0.5"></p>
+          <span class="text-xs text-slate-400">Lectura y redacción manual</span>
+        </div>
+        <div class="border-l border-brand-border/60 pl-4">
+          <span class="text-[10px] uppercase font-mono text-slate-500 tracking-wider">Con El Atajo</span>
+          <p id="modal-fast-time" class="text-sm font-semibold text-emerald-400 mt-0.5"></p>
+          <span class="text-xs text-slate-400">Ejecución del flujo estructurado</span>
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Instrucción Lista para Ejecutar</label>
+        <div class="relative bg-black/70 border border-brand-border rounded-xl p-4">
+          <pre id="modal-prompt" class="font-mono text-xs text-slate-200 whitespace-pre-wrap leading-relaxed"></pre>
+        </div>
+      </div>
+
+      <!-- FOOTER DEL MODAL ACTUALIZADO: HERRAMIENTA + ENLACE DINÁMICO + BOTÓN COPIAR -->
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-2 border-t border-brand-border/60">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+          <span id="modal-tool" class="text-xs text-slate-400 font-mono"></span>
+          <a id="modal-guide-link" href="#" class="text-xs font-semibold text-sky-400 hover:text-sky-300 transition-colors flex items-center gap-1">
+            <span>Leer guía completa</span>
+            <span>→</span>
+          </a>
+        </div>
+        <button id="modal-copy-btn" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-brand-accent hover:bg-brand-accentHover text-black text-xs font-semibold rounded-xl transition-all shadow-lg active:scale-95">
+          <span>Copiar Instrucción</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const WORKFLOWS_DATA = [
+      {
+        id: 'wf-01',
+        url: 'auditoria-ensayos.html',
+        title: 'Auditoría sin piedad de tus ensayos',
+        category: 'Escritura',
+        timeSaved: '45 min',
+        slowTime: '60 min',
+        fastTime: '3 min',
+        image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80',
+        summary: 'Encuentra las 3 premisas más débiles y los contraargumentos que un profesor te tirará en cara antes de entregar.',
+        recommendedModel: 'Claude 3.5 Sonnet',
+        prompt: `Actúa como un evaluador académico implacable. Analiza de forma crítica el borrador que te proporcionaré a continuación.
+
+Tu único trabajo es encontrar todas sus fallas antes de que mi profesor lo lea:
+1. Señala las 3 premisas que peor fundamentadas están y por qué carecen de sustento empírico.
+2. Formula 2 contraargumentos sólidos que un evaluador escéptico usaría en mi contra.
+3. Especifica con precisión qué referencias o datos concretos hacen falta para tapar esos huecos.
+
+Sé completamente directo. Cero cumplidos o introducción.
+
+Borrador:
+[PEGA TU TEXTO AQUÍ]`
+      },
+      {
+        id: 'wf-02',
+        url: 'desmontar-papers.html',
+        title: 'Desmontar papers de 30 páginas',
+        category: 'Investigación',
+        timeSaved: '60 min',
+        slowTime: '90 min',
+        fastTime: '4 min',
+        image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80',
+        summary: 'Extrae hipótesis, metodología, limitaciones y aplicación real en una matriz limpia sin leer páginas de relleno.',
+        recommendedModel: 'Claude 3.5 Sonnet / GPT-4o',
+        prompt: `Actúa como un analista de investigación senior. Procesa el siguiente material académico y genera una tabla sinóptica con este esquema estricto:
+
+- Núcleo del Trabajo: Tesis central en una sola frase concisa.
+- Metodología y Muestra: Datos clave del muestreo o procedimiento experimental.
+- Limitaciones Notificadas: Puntos ciegos o sesgos reconocidos en el estudio.
+- Aportación Práctica: Aplicación concreta del hallazgo en el ámbito profesional.
+
+Omite cualquier párrafo narrativo introductorio.
+
+Material:
+[PEGA EL TEXTO AQUÍ]`
+      },
+      {
+        id: 'wf-03',
+        url: 'simulador-examenes.html',
+        title: 'Simulador de parciales con trampas',
+        category: 'Estudio',
+        timeSaved: '90 min',
+        slowTime: '120 min',
+        fastTime: '5 min',
+        image: 'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&w=800&q=80',
+        summary: 'Genera casos prácticos cruzando dos o más temas del programa con preguntas capciosas para evaluar criterio real.',
+        recommendedModel: 'GPT-4o',
+        prompt: `Actúa como el profesor titular más exigente de la materia indicada. Tu objetivo es poner a prueba mi comprensión real de los temas sin depender de la memoria mecánica.
+
+Con base en el siguiente temario:
+1. Diseña 3 casos prácticos complejos donde converjan dos o más temas del programa.
+2. Formula para cada caso una pregunta con una opción trampa habitual y argumenta por qué es incorrecta.
+3. Provee los criterios indispensables que definirían una respuesta sobresaliente.
+
+Temario:
+[PEGA TU PROGRAMA AQUÍ]`
+      },
+      {
+        id: 'wf-04',
+        url: 'arreglar-datos.html',
+        title: 'Arreglar datos rotos y pasarlos a Excel',
+        category: 'Automatización',
+        timeSaved: '30 min',
+        slowTime: '40 min',
+        fastTime: '1 min',
+        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+        summary: 'Convierte listas mal copiadas de PDFs y datos caóticos en tablas CSV impecables listas para abrir en hojas de cálculo.',
+        recommendedModel: 'Cualquier LLM',
+        prompt: `Convierte los datos desestructurados adjuntos en una tabla estructurada en formato CSV delimitada por comas (,).
+
+Criterios:
+- Normaliza los encabezados a minúsculas en formato snake_case.
+- Reemplaza celdas con datos ausentes por "N/A".
+- Corrige inconsistencias tipográficas evidentes y saltos de línea erróneos.
+- Devuelve únicamente el bloque de código con el resultado tabular listo para exportar.
+
+Datos:
+[PEGA LA INFORMACIÓN AQUÍ]`
+      },
+      {
+        id: 'wf-05',
+        url: 'estructurar-diapositivas.html',
+        title: 'Estructurar diapositivas desde apuntes',
+        category: 'Escritura',
+        timeSaved: '75 min',
+        slowTime: '90 min',
+        fastTime: '5 min',
+        image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80',
+        summary: 'Transforma notas dispersas en un guión de diapositivas con balance de texto, notas para el orador y jerarquía visual.',
+        recommendedModel: 'Claude 3.5 Sonnet',
+        prompt: `Actúa como un diseñador de presentaciones ejecutivas. Convierte el siguiente bloque de notas en un esquema estructurado para una presentación de 10 diapositivas.
+
+Para cada diapositiva especifica:
+- Título conciso (máximo 5 palabras).
+- 3 viñetas con información clave (máximo 12 palabras cada una).
+- Nota para el expositor: qué decir oralmente para expandir el punto sin leer la pantalla.
+
+Notas:
+[PEGA TUS APUNTES AQUÍ]`
+      },
+      {
+        id: 'wf-06',
+        url: 'minutas-clases.html',
+        title: 'Minutas ejecutivas de clases grabadas',
+        category: 'Estudio',
+        timeSaved: '120 min',
+        slowTime: '120 min',
+        fastTime: '6 min',
+        image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',
+        summary: 'Convierte transcripciones automáticas desordenadas de clases en listas de decisiones, tareas y conceptos evaluables.',
+        recommendedModel: 'GPT-4o / Claude',
+        prompt: `Procesa la siguiente transcripción cruda de una clase universitaria y genera un informe estructurado:
+
+1. Conceptos Fundamentales: Las 3 ideas clave explicadas por el docente con su definición exacta.
+2. Tareas o Fechas Mencionadas: Cualquier entregable, examen o lectura que el profesor haya indicado.
+3. Preguntas Abiertas: Dudas planteadas durante la sesión que podrían ser objeto de examen.
+
+Transcripción cruda:
+[PEGA LA TRANSCRIPCIÓN AQUÍ]`
+      }
+    ];
+
+    let activeCategory = 'Todos';
+    let searchQuery = '';
+    let currentSelectedWf = null;
+
+    const grid = document.getElementById('workflows-grid');
+    const emptyState = document.getElementById('empty-state');
+    const searchInput = document.getElementById('search-input');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    function renderCards() {
+      const filtered = WORKFLOWS_DATA.filter(wf => {
+        const matchesCat = activeCategory === 'Todos' || wf.category === activeCategory;
+        const matchesSearch = wf.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              wf.summary.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCat && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      grid.innerHTML = filtered.map((wf, idx) => `
+        <article class="card-sheen bg-brand-card border border-brand-border rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:border-brand-accent/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/50" style="animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${idx * 0.08}s both;">
+          <div>
+            <div class="relative h-44 w-full overflow-hidden bg-slate-900">
+              <img src="${wf.image}" alt="${wf.title}" class="w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="px-2.5 py-1 rounded-md text-[10px] font-semibold uppercase tracking-wider bg-black/70 backdrop-blur-md text-slate-200 border border-white/10">
+                  ${wf.category}
+                </span>
+              </div>
+              <div class="absolute top-3 right-3">
+                <span class="px-2.5 py-1 rounded-md text-[10px] font-medium bg-emerald-500/20 backdrop-blur-md text-emerald-300 border border-emerald-500/30">
+                  ⚡ Ahorras ~${wf.timeSaved}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-5">
+              <h2 class="text-lg font-bold text-white mb-2 leading-snug">
+                ${wf.title}
+              </h2>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                ${wf.summary}
+              </p>
+            </div>
+          </div>
+
+          <div class="px-5 pb-5 pt-0">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 bg-brand-surface px-3 py-1.5 rounded-lg border border-brand-border mb-4">
+              <span class="text-rose-400 line-through">Manual: ${wf.slowTime}</span>
+              <span class="text-emerald-400 font-semibold">Atajo: ${wf.fastTime}</span>
+            </div>
+
+            <div class="flex items-center justify-between border-t border-brand-border/60 pt-3">
+              <span class="text-[11px] text-slate-500 font-mono truncate max-w-[120px]">${wf.recommendedModel}</span>
+              <button onclick="openModal('${wf.id}')" class="px-3.5 py-1.5 rounded-lg bg-brand-pill hover:bg-brand-border text-xs font-semibold text-sky-400 transition-colors flex items-center gap-1.5">
+                <span>Ver Atajo</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    const modal = document.getElementById('modal-container');
+    const modalTitle = document.getElementById('modal-title');
+    const modalCat = document.getElementById('modal-category');
+    const modalPrompt = document.getElementById('modal-prompt');
+    const modalTool = document.getElementById('modal-tool');
+    const modalSlowTime = document.getElementById('modal-slow-time');
+    const modalFastTime = document.getElementById('modal-fast-time');
+    const modalCopyBtn = document.getElementById('modal-copy-btn');
+    const modalGuideLink = document.getElementById('modal-guide-link');
+
+    function openModal(id) {
+      currentSelectedWf = WORKFLOWS_DATA.find(w => w.id === id);
+      if (!currentSelectedWf) return;
+
+      modalTitle.textContent = currentSelectedWf.title;
+      modalCat.textContent = currentSelectedWf.category;
+      modalPrompt.textContent = currentSelectedWf.prompt;
+      modalTool.textContent = `Herramienta: ${currentSelectedWf.recommendedModel}`;
+      modalSlowTime.textContent = `~${currentSelectedWf.slowTime}`;
+      modalFastTime.textContent = `~${currentSelectedWf.fastTime}`;
+      
+      // Enlace dinámico al archivo HTML correspondiente
+      modalGuideLink.href = currentSelectedWf.url || '#';
+      
+      modalCopyBtn.onclick = () => {
+        navigator.clipboard.writeText(currentSelectedWf.prompt).then(() => {
+          modalCopyBtn.innerHTML = '<span>¡Instrucción Copiada!</span>';
+          modalCopyBtn.classList.replace('bg-brand-accent', 'bg-emerald-500');
+          setTimeout(() => {
+            modalCopyBtn.innerHTML = '<span>Copiar Instrucción</span>';
+            modalCopyBtn.classList.replace('bg-emerald-500', 'bg-brand-accent');
+          }, 2000);
+        });
+      };
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderCards();
+    });
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeCategory = btn.dataset.cat;
+        filterButtons.forEach(b => {
+          b.className = 'filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white';
+        });
+        btn.className = 'filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-white text-black font-semibold shadow-sm';
+        renderCards();
+      });
+    });
+
+    const calcPapers = document.getElementById('calc-papers');
+    const calcEssays = document.getElementById('calc-essays');
+    const calcPapersVal = document.getElementById('calc-papers-val');
+    const calcEssaysVal = document.getElementById('calc-essays-val');
+    const calculatedHours = document.getElementById('calculated-hours');
+
+    function updateCalculatedHours() {
+      const papers = parseInt(calcPapers.value);
+      const essays = parseInt(calcEssays.value);
+      calcPapersVal.textContent = papers;
+      calcEssaysVal.textContent = essays;
+      const total = (papers * 1.25 + essays * 1.5).toFixed(1);
+      calculatedHours.textContent = total;
+    }
+
+    calcPapers.addEventListener('input', updateCalculatedHours);
+    calcEssays.addEventListener('input', updateCalculatedHours);
+
+    renderCards();
+
+    const container = document.getElementById('webgl-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.z = 400;
+
+    const renderer = new THREE.WebGLRenderer({ canvas: container, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const particleCount = 750;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
+
+    const baseColor = new THREE.Color('#38BDF8');
+    const altColor = new THREE.Color('#818CF8');
+
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 1200;
+      positions[i + 1] = (Math.random() - 0.5) * 1200;
+      positions[i + 2] = (Math.random() - 0.5) * 800;
+
+      const mixed = Math.random() > 0.5 ? baseColor : altColor;
+      colors[i] = mixed.r;
+      colors[i + 1] = mixed.g;
+      colors[i + 2] = mixed.b;
+    }
+
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+    const material = new THREE.PointsMaterial({
+      size: 3,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.55,
+      blending: THREE.AdditiveBlending
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX - window.innerWidth / 2) * 0.25;
+      mouseY = (e.clientY - window.innerHeight / 2) * 0.25;
+    });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    function animateWebGL() {
+      requestAnimationFrame(animateWebGL);
+
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
+
+      particles.rotation.x += 0.0003;
+      particles.rotation.y += 0.0005;
+
+      particles.position.x = targetX * 0.6;
+      particles.position.y = -targetY * 0.6;
+
+      renderer.render(scene, camera);
+    }
+    animateWebGL();
+  </script>
+</body>
+</html>
