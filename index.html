@@ -262,7 +262,7 @@
       </div>
     </section>
 
-    <!-- GRID DE WORKFLOWS CON CONTROL DE STATUS -->
+    <!-- GRID DE WORKFLOWS (PROMPT RÁPIDO RESTRINGIDO EN PRÓXIMAMENTE) -->
     <section id="workflows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
     </section>
 
@@ -272,7 +272,7 @@
       </p>
     </div>
 
-    <!-- SECCIÓN: EL MANIFIESTO (CORREGIDO Y ALINEADO) -->
+    <!-- SECCIÓN: EL MANIFIESTO -->
     <section id="manifiesto" class="pt-16 pb-8 border-t border-brand-border/60">
       <div class="max-w-3xl mb-12">
         <span class="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">El Manifiesto</span>
@@ -286,7 +286,6 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- TARJETA 01 -->
         <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
           <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             01
@@ -297,7 +296,6 @@
           </p>
         </div>
 
-        <!-- TARJETA 02 -->
         <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
           <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             02
@@ -308,7 +306,6 @@
           </p>
         </div>
 
-        <!-- TARJETA 03 (CORREGIDA: SIMÉTRICA Y LIMPIA) -->
         <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
           <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             03
@@ -574,6 +571,7 @@ Cita:
     const searchInput = document.getElementById('search-input');
     const filterButtons = document.querySelectorAll('.filter-btn');
 
+    // RENDER BLINDADO: PROMPT RÁPIDO SELLADO EN PRÓXIMAMENTE
     function renderCards() {
       const filtered = WORKFLOWS_DATA.filter(wf => {
         const matchesCat = activeCategory === 'Todos' || wf.category === activeCategory;
@@ -612,7 +610,7 @@ Cita:
               </a>
             ` : `
               <div class="relative h-44 w-full overflow-hidden bg-slate-900">
-                <img src="${wf.image}" alt="${wf.title}" referrerpolicy="no-referrer" class="w-full h-full object-cover opacity-60 filter grayscale-[20%]" loading="lazy">
+                <img src="${wf.image}" alt="${wf.title}" referrerpolicy="no-referrer" class="w-full h-full object-cover opacity-50 filter grayscale-[30%]" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
                 <div class="absolute top-3 left-3">
                   <span class="px-2.5 py-1 rounded-md text-[10px] font-semibold uppercase tracking-wider bg-black/70 backdrop-blur-md text-slate-200 border border-white/10">
@@ -628,7 +626,7 @@ Cita:
             `}
 
             <div class="p-5">
-              <h2 class="text-lg font-bold text-white mb-2 leading-snug ${isActive ? 'hover:text-sky-400' : 'text-slate-200'} transition-colors">
+              <h2 class="text-lg font-bold text-white mb-2 leading-snug ${isActive ? 'hover:text-sky-400' : 'text-slate-300'} transition-colors">
                 ${isActive ? `<a href="${wf.url}">${wf.title}</a>` : wf.title}
               </h2>
               <p class="text-slate-400 text-xs leading-relaxed mb-4">
@@ -643,12 +641,13 @@ Cita:
               <span class="text-emerald-400 font-semibold">Atajo: ${wf.fastTime}</span>
             </div>
 
+            <!-- BOTONES DE ACCIÓN: SOLO ACTIVOS EN PROTOCOLOS PUBLICADOS -->
             <div class="flex items-center justify-between border-t border-brand-border/60 pt-3 gap-2">
-              <button onclick="openModal('${wf.id}')" class="px-3 py-1.5 rounded-lg bg-brand-surface hover:bg-brand-pill text-xs font-medium text-slate-300 transition-colors border border-brand-border" title="Ver prompt rápido">
-                Prompt Rápido
-              </button>
-
               ${isActive ? `
+                <button onclick="openModal('${wf.id}')" class="px-3 py-1.5 rounded-lg bg-brand-surface hover:bg-brand-pill text-xs font-medium text-slate-300 transition-colors border border-brand-border">
+                  Prompt Rápido
+                </button>
+
                 <a href="${wf.url}" class="px-3.5 py-1.5 rounded-lg bg-brand-pill hover:bg-brand-border text-xs font-semibold text-sky-400 transition-colors flex items-center gap-1.5">
                   <span>Leer Guía</span>
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -656,8 +655,11 @@ Cita:
                   </svg>
                 </a>
               ` : `
-                <span class="px-3 py-1 rounded-lg text-xs font-mono text-slate-500 bg-brand-surface border border-brand-border/50 cursor-not-allowed">
-                  En redacción
+                <span class="text-[11px] font-mono text-slate-500 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400/60 animate-pulse"></span> En fase de prueba
+                </span>
+                <span class="px-3 py-1 rounded-lg text-xs font-mono text-slate-500 bg-brand-surface border border-brand-border/40 cursor-not-allowed">
+                  Próximamente
                 </span>
               `}
             </div>
@@ -676,9 +678,10 @@ Cita:
     const modalCopyBtn = document.getElementById('modal-copy-btn');
     const modalGuideLink = document.getElementById('modal-guide-link');
 
+    // VALIDACIÓN ESTRICTA: SOLO ABRE SI EL STATUS ES ACTIVE
     function openModal(id) {
       currentSelectedWf = WORKFLOWS_DATA.find(w => w.id === id);
-      if (!currentSelectedWf) return;
+      if (!currentSelectedWf || currentSelectedWf.status !== 'active') return;
 
       modalTitle.textContent = currentSelectedWf.title;
       modalCat.textContent = currentSelectedWf.category;
@@ -686,13 +689,7 @@ Cita:
       modalTool.textContent = `Herramienta: ${currentSelectedWf.recommendedModel}`;
       modalSlowTime.textContent = `~${currentSelectedWf.slowTime}`;
       modalFastTime.textContent = `~${currentSelectedWf.fastTime}`;
-      
-      if (currentSelectedWf.status === 'active') {
-        modalGuideLink.href = currentSelectedWf.url;
-        modalGuideLink.classList.remove('hidden');
-      } else {
-        modalGuideLink.classList.add('hidden');
-      }
+      modalGuideLink.href = currentSelectedWf.url;
       
       modalCopyBtn.onclick = () => {
         navigator.clipboard.writeText(currentSelectedWf.prompt).then(() => {
