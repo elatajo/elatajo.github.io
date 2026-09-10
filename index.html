@@ -142,23 +142,22 @@
     </div>
   </header>
 
-<!-- HERO SECTION FULL-BLEED -->
+  <!-- HERO SECTION FULL-BLEED (TEXTO MONTADO DIRECTAMENTE SOBRE LA IMAGEN) -->
   <section class="relative w-full min-h-[75vh] md:min-h-[82vh] flex items-center justify-center overflow-hidden border-b border-brand-border/60 bg-zinc-950">
     
-    <!-- IMAGEN DE FONDO PANORÁMICA BLINDADA -->
+    <!-- IMAGEN PANORÁMICA 100% ANCHO PROTEGIDA CONTRA BLOQUEOS -->
     <div class="absolute inset-0 w-full h-full overflow-hidden">
       <img 
         src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=2000&q=80" 
-        alt="" 
+        alt="Biblioteca de investigación" 
         referrerpolicy="no-referrer"
         class="w-full h-full object-cover object-center filter brightness-50 contrast-125 scale-105"
       >
-      <!-- CAPAS DE GRADIENTE PARA CONTRASTE PERFECTO -->
       <div class="absolute inset-0 bg-gradient-to-t from-[#0B0C0E] via-[#0B0C0E]/70 to-[#0B0C0E]/40"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-[#0B0C0E]/60 via-transparent to-[#0B0C0E]/60"></div>
     </div>
 
-    <!-- TEXTO MONTADO SOBRE LA IMAGEN -->
+    <!-- CONTENIDO DEL HERO -->
     <div class="relative z-20 max-w-5xl mx-auto px-6 py-20 text-center animate-fade-in-up">
       
       <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white leading-[1.04] mb-6 drop-shadow-2xl">
@@ -185,7 +184,7 @@
 
   </section>
 
-  <!-- CONTENEDOR PRINCIPAL RESTRINGIDO PARA EL RESTO DE LA PÁGINA -->
+  <!-- CONTENEDOR PRINCIPAL -->
   <main class="max-w-7xl mx-auto px-6 pt-20 pb-28 flex-1 w-full relative z-10">
 
     <!-- CALCULADORA DE TIEMPO INTERACTIVA -->
@@ -267,7 +266,7 @@
       </div>
     </section>
 
-    <!-- GRID DE WORKFLOWS -->
+    <!-- GRID DE WORKFLOWS (CON ENLACE DIRECTO EN IMAGEN, TÍTULO Y BOTÓN) -->
     <section id="workflows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
     </section>
 
@@ -536,6 +535,7 @@ Transcripción cruda:
     const searchInput = document.getElementById('search-input');
     const filterButtons = document.querySelectorAll('.filter-btn');
 
+    // RENDER DE TARJETAS CON ENLACE DIRECTO (FOTO, TÍTULO Y BOTÓN)
     function renderCards() {
       const filtered = WORKFLOWS_DATA.filter(wf => {
         const matchesCat = activeCategory === 'Todos' || wf.category === activeCategory;
@@ -554,8 +554,9 @@ Transcripción cruda:
       grid.innerHTML = filtered.map((wf, idx) => `
         <article class="card-sheen bg-brand-card border border-brand-border rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:border-brand-accent/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/50" style="animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${idx * 0.08}s both;">
           <div>
-            <div class="relative h-44 w-full overflow-hidden bg-slate-900">
-              <img src="${wf.image}" alt="${wf.title}" class="w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500" loading="lazy">
+            <!-- IMAGEN CON ENLACE DIRECTO AL ARTÍCULO -->
+            <a href="${wf.url}" class="block relative h-44 w-full overflow-hidden bg-slate-900 group">
+              <img src="${wf.image}" alt="${wf.title}" referrerpolicy="no-referrer" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="px-2.5 py-1 rounded-md text-[10px] font-semibold uppercase tracking-wider bg-black/70 backdrop-blur-md text-slate-200 border border-white/10">
@@ -567,11 +568,14 @@ Transcripción cruda:
                   ⚡ Ahorras ~${wf.timeSaved}
                 </span>
               </div>
-            </div>
+            </a>
 
             <div class="p-5">
-              <h2 class="text-lg font-bold text-white mb-2 leading-snug">
-                ${wf.title}
+              <!-- TÍTULO CON ENLACE DIRECTO AL ARTÍCULO -->
+              <h2 class="text-lg font-bold text-white mb-2 leading-snug hover:text-sky-400 transition-colors">
+                <a href="${wf.url}">
+                  ${wf.title}
+                </a>
               </h2>
               <p class="text-slate-400 text-xs leading-relaxed mb-4">
                 ${wf.summary}
@@ -585,14 +589,18 @@ Transcripción cruda:
               <span class="text-emerald-400 font-semibold">Atajo: ${wf.fastTime}</span>
             </div>
 
-            <div class="flex items-center justify-between border-t border-brand-border/60 pt-3">
-              <span class="text-[11px] text-slate-500 font-mono truncate max-w-[120px]">${wf.recommendedModel}</span>
-              <button onclick="openModal('${wf.id}')" class="px-3.5 py-1.5 rounded-lg bg-brand-pill hover:bg-brand-border text-xs font-semibold text-sky-400 transition-colors flex items-center gap-1.5">
-                <span>Ver Atajo</span>
+            <!-- BOTONES DE ACCIÓN: COPIAR RÁPIDO O LEER GUÍA DIRECTA -->
+            <div class="flex items-center justify-between border-t border-brand-border/60 pt-3 gap-2">
+              <button onclick="openModal('${wf.id}')" class="px-3 py-1.5 rounded-lg bg-brand-surface hover:bg-brand-pill text-xs font-medium text-slate-300 transition-colors border border-brand-border" title="Ver prompt rápido">
+                Prompt Rápido
+              </button>
+
+              <a href="${wf.url}" class="px-3.5 py-1.5 rounded-lg bg-brand-pill hover:bg-brand-border text-xs font-semibold text-sky-400 transition-colors flex items-center gap-1.5">
+                <span>Leer Guía</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                 </svg>
-              </button>
+              </a>
             </div>
           </div>
         </article>
