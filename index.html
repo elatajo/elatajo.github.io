@@ -262,7 +262,7 @@
       </div>
     </section>
 
-    <!-- GRID DE WORKFLOWS (PROMPT RÁPIDO RESTRINGIDO EN PRÓXIMAMENTE) -->
+    <!-- GRID DE WORKFLOWS (SIN DUPLICIDAD DE TEXTO) -->
     <section id="workflows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
     </section>
 
@@ -571,7 +571,7 @@ Cita:
     const searchInput = document.getElementById('search-input');
     const filterButtons = document.querySelectorAll('.filter-btn');
 
-    // RENDER BLINDADO: PROMPT RÁPIDO SELLADO EN PRÓXIMAMENTE
+    // RENDER: SIN DUPLICIDAD DE 'PRÓXIMAMENTE'
     function renderCards() {
       const filtered = WORKFLOWS_DATA.filter(wf => {
         const matchesCat = activeCategory === 'Todos' || wf.category === activeCategory;
@@ -641,7 +641,7 @@ Cita:
               <span class="text-emerald-400 font-semibold">Atajo: ${wf.fastTime}</span>
             </div>
 
-            <!-- BOTONES DE ACCIÓN: SOLO ACTIVOS EN PROTOCOLOS PUBLICADOS -->
+            <!-- BOTONES DE ACCIÓN: SIN REDUNDANCIA -->
             <div class="flex items-center justify-between border-t border-brand-border/60 pt-3 gap-2">
               ${isActive ? `
                 <button onclick="openModal('${wf.id}')" class="px-3 py-1.5 rounded-lg bg-brand-surface hover:bg-brand-pill text-xs font-medium text-slate-300 transition-colors border border-brand-border">
@@ -655,12 +655,14 @@ Cita:
                   </svg>
                 </a>
               ` : `
-                <span class="text-[11px] font-mono text-slate-500 flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400/60 animate-pulse"></span> En fase de prueba
-                </span>
-                <span class="px-3 py-1 rounded-lg text-xs font-mono text-slate-500 bg-brand-surface border border-brand-border/40 cursor-not-allowed">
-                  Próximamente
-                </span>
+                <div class="w-full flex items-center justify-between py-1">
+                  <span class="text-[11px] font-mono text-slate-500 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400/60 animate-pulse"></span> En fase de prueba
+                  </span>
+                  <span class="text-xs font-mono text-slate-600">
+                    Semana entrante
+                  </span>
+                </div>
               `}
             </div>
           </div>
@@ -678,7 +680,6 @@ Cita:
     const modalCopyBtn = document.getElementById('modal-copy-btn');
     const modalGuideLink = document.getElementById('modal-guide-link');
 
-    // VALIDACIÓN ESTRICTA: SOLO ABRE SI EL STATUS ES ACTIVE
     function openModal(id) {
       currentSelectedWf = WORKFLOWS_DATA.find(w => w.id === id);
       if (!currentSelectedWf || currentSelectedWf.status !== 'active') return;
