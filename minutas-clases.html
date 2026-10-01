@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minutas de clases grabadas — El Atajo</title>
+  
+  <!-- METADATOS OPEN GRAPH -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://elatajo.github.io/minutas-clases.html">
+  <meta property="og:title" content="Minutas de clases grabadas — El Atajo">
+  <meta property="og:description" content="Convierte transcripciones de clases de 2 horas en conceptos evaluables, tareas y fechas de examen en 6 minutos.">
+  <meta property="og:image" content="https://elatajo.github.io/og-image.png">
+
+  <!-- FAVICON VECTORIAL OFICIAL -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2313151A' stroke='%23232732' stroke-width='1.5'/><path d='M10 22L22 10M22 10H14M22 10V18' stroke='%2338BDF8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              background: '#0B0C0E',
+              surface: '#13151A',
+              card: '#181B22',
+              border: '#232732',
+              accent: '#38BDF8',
+              accentHover: '#0EA5E9',
+              pill: '#1E222D'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0B0C0E;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection {
+      background-color: #38BDF8;
+      color: #0B0C0E;
+    }
+    #webgl-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+    .glass-nav {
+      background: rgba(11, 12, 14, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+  </style>
+</head>
+
+<body class="text-slate-100 min-h-screen flex flex-col font-sans relative overflow-x-hidden">
+
+  <canvas id="webgl-canvas"></canvas>
+
+  <header class="glass-nav border-b border-brand-border/60 sticky top-0 z-40">
+    <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors group">
+        <svg class="w-4 h-4 text-sky-400 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Volver a El Atajo</span>
+      </a>
+
+      <div class="flex items-center gap-2 border border-brand-border bg-brand-pill px-3 py-1 rounded-full text-xs font-medium text-slate-300">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span>Protocolo de Síntesis Oral</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 pt-12 pb-24 flex-1 w-full relative z-10">
+
+    <div class="flex flex-wrap items-center gap-3 mb-6">
+      <span class="px-2.5 py-1 rounded-md text-xs font-semibold uppercase tracking-wider bg-brand-surface text-slate-300 border border-brand-border">
+        Estudio
+      </span>
+      <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+        ⚡ Ahorro real: 120 min
+      </span>
+      <span class="text-xs text-slate-500 font-mono">Lectura: 3 min</span>
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
+      Minutas ejecutivas de clases grabadas
+    </h1>
+    <p class="text-slate-400 text-lg leading-relaxed mb-8">
+      Cómo procesar transcripciones automáticas de sesiones de 2 horas (Teams, Zoom o Meet) para extraer conceptos teóricos con definición exacta, tareas asignadas y advertencias de examen sin volver a escuchar la grabación.
+    </p>
+
+    <div class="relative h-72 sm:h-96 w-full rounded-2xl overflow-hidden mb-12 border border-brand-border bg-slate-900">
+      <img 
+        src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80" 
+        alt="Aula magna de universidad y conferencia" 
+        referrerpolicy="no-referrer"
+        class="w-full h-full object-cover opacity-85"
+      >
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-background via-transparent to-transparent"></div>
+    </div>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+      <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
+        <div class="text-[11px] font-mono text-rose-400 uppercase tracking-wider font-semibold">El Camino Largo</div>
+        <div class="text-2xl font-bold text-white mt-1 mb-2">~120 minutos</div>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Escuchar grabaciones completas a 1.5x de velocidad, deteniendo el audio cada tres minutos para anotar fechas y comentarios dispersos del profesor entre anécdotas irrelevantes.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-brand-surface border border-sky-500/30">
+        <div class="text-[11px] font-mono text-emerald-400 uppercase tracking-wider font-semibold">Con El Atajo</div>
+        <div class="text-2xl font-bold text-white mt-1 mb-2">~6 minutos</div>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Descargas la transcripción automática de texto, ejecutas la instrucción de extracción estructurada y obtienes una minuta con fechas, tareas y conceptos evaluables.
+        </p>
+      </div>
+    </section>
+
+    <article class="space-y-8 text-slate-300 text-sm leading-relaxed mb-16">
+      <div>
+        <h2 class="text-xl font-bold text-white mb-3">El desperdicio del audio lineal</h2>
+        <p class="text-slate-400 leading-relaxed">
+          El audio es el peor formato para estudiar: es lineal, lento y no se puede escanear con la vista. En una clase de dos horas, apenas 15 minutos contienen explicaciones críticas para el examen; el resto son pausas, resolución de dudas individuales y comentarios logísticos. La ventaja competitiva consiste en **convertir la voz en texto y pasar el texto por un filtro de alta densidad**.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-brand-card border border-brand-border">
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-4">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold">Instrucción Maestra</span>
+            <div class="text-xs text-slate-500 mt-0.5">Modelos recomendados: GPT-4o o Claude 3.5 Sonnet (alta ventana de contexto)</div>
+          </div>
+          <button id="copy-btn" onclick="copyArticlePrompt()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-accent hover:bg-brand-accentHover text-black text-xs font-semibold rounded-xl transition-all shadow-md active:scale-95 w-full sm:w-auto">
+            <span>Copiar Instrucción</span>
+          </button>
+        </div>
+
+        <div class="bg-black/80 border border-brand-border/80 rounded-xl p-4">
+          <pre id="article-prompt" class="font-mono text-xs text-slate-200 whitespace-pre-wrap leading-relaxed">Actúa como un asistente académico senior. Analiza la siguiente transcripción cruda de una clase universitaria y genera un reporte estructurado y conciso:
+
+1. Conceptos Fundamentales: Las 3 ideas clave explicadas por el docente con su definición exacta y su ejemplo aplicado.
+2. Compromisos y Fechas: Cualquier tarea, fecha de parcial, entrega de proyecto o lectura obligatoria mencionada en la sesión.
+3. Preguntas de Examen Potenciales: 2 o 3 preguntas conceptuales basadas en los puntos donde el profesor hizo mayor énfasis o corrigió a los estudiantes.
+
+Omite cualquier saludo, anécdota personal o comentario logístico intrascendente.
+
+Transcripción cruda:
+[PEGA LA TRANSCRIPCIÓN AQUÍ]</pre>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-white mb-4">Cómo obtener la transcripción en 2 minutos</h2>
+        <ol class="space-y-4 list-decimal list-inside text-slate-400">
+          <li class="pl-2 leading-relaxed">
+            <strong class="text-white">Si la clase fue en Microsoft Teams o Zoom:</strong> En la grabación de la nube, ve a <em>Transcripción</em> y haz clic en <em>Descargar archivo de texto (.vtt o .docx)</em>.
+          </li>
+          <li class="pl-2 leading-relaxed">
+            <strong class="text-white">Si tienes solo el archivo de audio (.mp3 o .m4a):</strong> Arrástralo a una herramienta gratuita de transcripción por IA como MacWhisper, Whisper Web o el propio transcriptor de Word Online.
+          </li>
+          <li class="pl-2 leading-relaxed">
+            <strong class="text-white">Pega la transcripción en la instrucción:</strong> No importa que tenga errores tipográficos menores; el modelo entenderá el contexto y extraerá la minuta con precisión milimétrica.
+          </li>
+        </ol>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
+        <h3 class="text-base font-bold text-white mb-3">Minuta resultante (Ejemplo real de salida):</h3>
+        <div class="space-y-3 font-mono text-xs">
+          <div class="p-3 rounded-xl bg-brand-card border border-brand-border/60">
+            <span class="text-sky-400 font-semibold block mb-1">Concepto Clave Destacado:</span>
+            <p class="text-slate-300">"El principio de Pareto aplicado a software: el 80% de los errores de memoria se originan en el 20% de los módulos sin tipado estricto."</p>
+          </div>
+          <div class="p-3 rounded-xl bg-brand-card border border-amber-500/20 text-slate-400">
+            <span class="text-amber-400 font-semibold block mb-1">Compromiso para la próxima clase:</span>
+            <p class="text-slate-300">Entrega del borrador de arquitectura el 24 de marzo antes de las 11:59 PM en la plataforma virtual.</p>
+          </div>
+          <div class="p-3 rounded-xl bg-brand-card border border-emerald-500/20 text-slate-400">
+            <span class="text-emerald-400 font-semibold block mb-1">Voz de alerta de examen:</span>
+            <p class="text-slate-300">El docente advirtió explícitamente en el minuto 42 que preguntará la diferencia entre concurrencia y paralelismo con un caso práctico.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="border-t border-brand-border/80 pt-8 flex justify-between items-center">
+      <a href="estructurar-diapositivas.html" class="text-xs font-semibold text-slate-400 hover:text-white transition-colors flex items-center gap-1">
+        <span>←</span>
+        <span>Anterior: Estructurar diapositivas</span>
+      </a>
+      <a href="index.html#catalogo" class="text-xs font-semibold text-sky-400 hover:text-sky-300 transition-colors flex items-center gap-1">
+        <span>Volver al Catálogo</span>
+        <span>→</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="border-t border-brand-border/60 bg-brand-surface/40 py-10 relative z-10">
+    <div class="max-w-4xl mx-auto px-6 flex justify-between items-center text-xs text-slate-500">
+      <span>El Atajo // Guías de Productividad con IA</span>
+      <span>Actualizado semanalmente</span>
+    </div>
+  </footer>
+
+  <script>
+    function copyArticlePrompt() {
+      const promptText = document.getElementById('article-prompt').innerText;
+      const btn = document.getElementById('copy-btn');
+      navigator.clipboard.writeText(promptText).then(() => {
+        btn.innerHTML = '<span>¡Instrucción Copiada!</span>';
+        btn.classList.replace('bg-brand-accent', 'bg-emerald-500');
+        setTimeout(() => {
+          btn.innerHTML = '<span>Copiar Instrucción</span>';
+          btn.classList.replace('bg-emerald-500', 'bg-brand-accent');
+        }, 2000);
+      });
+    }
+
+    const container = document.getElementById('webgl-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.z = 400;
+    const renderer = new THREE.WebGLRenderer({ canvas: container, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    const particleCount = 500;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 1200;
+      positions[i + 1] = (Math.random() - 0.5) * 1200;
+      positions[i + 2] = (Math.random() - 0.5) * 800;
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const material = new THREE.PointsMaterial({ size: 2.5, color: 0x38bdf8, transparent: true, opacity: 0.45, blending: THREE.AdditiveBlending });
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+    function animateWebGL() { requestAnimationFrame(animateWebGL); particles.rotation.y += 0.0004; renderer.render(scene, camera); }
+    animateWebGL();
+    window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+  </script>
+</body>
+</html>

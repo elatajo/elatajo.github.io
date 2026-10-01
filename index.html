@@ -3,8 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Atajo — Resuelve con IA y recupera tu tiempo</title>
+  <title>El Atajo — Publicidad, Creatividad e IA para resolver rápido</title>
   
+  <!-- METADATOS OFICIALES PARA WHATSAPP (OPEN GRAPH) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elatajo.github.io/">
+  <meta property="og:title" content="El Atajo — Publicidad, Creatividad e IA para resolver rápido">
+  <meta property="og:description" content="Fórmulas prácticas de inteligencia artificial para crear campañas, guiones virales, copys que venden y estrategias en minutos.">
+  <meta property="og:image" content="https://elatajo.github.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="El Atajo // IA para Publicidad">
+
   <!-- FAVICON VECTORIAL OFICIAL -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2313151A' stroke='%23232732' stroke-width='1.5'/><path d='M10 22L22 10M22 10H14M22 10V18' stroke='%2338BDF8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 
@@ -165,12 +175,12 @@
       </h1>
       
       <p class="text-slate-300 text-base sm:text-xl leading-relaxed max-w-2xl mx-auto font-normal mb-10 drop-shadow-lg">
-        Fórmulas exactas para salir de ensayos, análisis de documentos densos y desorden de datos en minutos. Cero palabreo conceptual. Pura ejecución.
+        Fórmulas prácticas de inteligencia artificial para publicidad, redacción de anuncios, ideas de campaña y trabajo creativo. Sin enredos técnicos. Pura ejecución para salir de eso rápido.
       </p>
 
       <div class="flex flex-wrap justify-center items-center gap-4">
         <a href="#catalogo" class="px-7 py-3.5 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-black text-xs sm:text-sm font-bold transition-all shadow-xl shadow-sky-500/20 active:scale-95">
-          Explorar Catálogo Completo
+          Ver Fórmulas de Publicidad
         </a>
         <a href="#calculadora" class="px-7 py-3.5 rounded-xl bg-black/60 hover:bg-black/80 backdrop-blur-md text-white text-xs sm:text-sm font-semibold border border-white/20 transition-all active:scale-95">
           Calcular Horas Ahorradas
@@ -183,20 +193,20 @@
   <!-- CONTENEDOR PRINCIPAL -->
   <main class="max-w-7xl mx-auto px-6 pt-20 pb-28 flex-1 w-full relative z-10">
 
-    <!-- CALCULADORA DE TIEMPO INTERACTIVA -->
+    <!-- CALCULADORA DE TIEMPO INTERACTIVA (ENFOCADA EN CREATIVIDAD Y PUBLICIDAD) -->
     <section id="calculadora" class="mb-24 p-8 rounded-3xl bg-brand-surface/60 border border-brand-border/80 backdrop-blur-xl">
       <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center justify-between">
         <div class="max-w-md">
           <span class="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">Simulador de Ahorro</span>
           <h2 class="text-2xl font-bold text-white mt-1 mb-2">Calcula tus horas recuperadas</h2>
           <p class="text-slate-400 text-sm leading-relaxed">
-            Indica cuántas tareas mecánicas tienes al mes para proyectar el tiempo que puedes devolverle a tu vida usando estos flujos.
+            Indica cuántas campañas, anuncios o textos creas al mes para ver cuánto tiempo de bloqueo creativo te ahorras usando estos flujos.
           </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:w-auto">
           <div class="p-4 rounded-xl bg-brand-card border border-brand-border">
-            <label class="block text-xs text-slate-400 mb-2 font-medium">Papers / Lecturas por mes</label>
+            <label class="block text-xs text-slate-400 mb-2 font-medium">Ideas de Campaña / Estrategias al mes</label>
             <input id="calc-papers" type="range" min="1" max="15" value="4" class="w-full accent-sky-400 cursor-pointer">
             <div class="flex justify-between text-xs font-mono mt-1 text-slate-400">
               <span>1</span>
@@ -206,12 +216,12 @@
           </div>
 
           <div class="p-4 rounded-xl bg-brand-card border border-brand-border">
-            <label class="block text-xs text-slate-400 mb-2 font-medium">Ensayos o Informes por mes</label>
-            <input id="calc-essays" type="range" min="1" max="8" value="2" class="w-full accent-sky-400 cursor-pointer">
+            <label class="block text-xs text-slate-400 mb-2 font-medium">Textos de Anuncios / Guiones al mes</label>
+            <input id="calc-essays" type="range" min="1" max="10" value="3" class="w-full accent-sky-400 cursor-pointer">
             <div class="flex justify-between text-xs font-mono mt-1 text-slate-400">
               <span>1</span>
-              <span id="calc-essays-val" class="text-white font-bold">2</span>
-              <span>8</span>
+              <span id="calc-essays-val" class="text-white font-bold">3</span>
+              <span>10</span>
             </div>
           </div>
         </div>
@@ -219,15 +229,15 @@
         <div class="w-full lg:w-48 text-left lg:text-right border-t lg:border-t-0 lg:border-l border-brand-border pt-4 lg:pt-0 lg:pl-6">
           <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Ahorro Estimado</div>
           <div class="text-4xl font-extrabold text-sky-400 mt-1 flex items-baseline lg:justify-end gap-1">
-            <span id="calculated-hours">11.5</span>
+            <span id="calculated-hours">14.5</span>
             <span class="text-sm font-medium text-slate-400">hrs/mes</span>
           </div>
-          <div class="text-[11px] text-emerald-400 mt-1 font-medium">~1.5 días libres ganados</div>
+          <div class="text-[11px] text-emerald-400 mt-1 font-medium">~ Casi 2 días de trabajo ganados</div>
         </div>
       </div>
     </section>
 
-    <!-- BARRA DE BÚSQUEDA Y FILTROS -->
+    <!-- BARRA DE BÚSQUEDA Y FILTROS ADAPTADOS A PUBLICIDAD -->
     <section id="catalogo" class="space-y-6 mb-12">
       <div class="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
         <div class="relative flex-1 max-w-md">
@@ -237,7 +247,7 @@
           <input
             id="search-input"
             type="text"
-            placeholder="Buscar por tarea: 'ensayos', 'auditoría', 'resumen', 'datos'..."
+            placeholder="Buscar por tarea: 'anuncios', 'brief', 'competencia', 'ganchos'..."
             class="w-full pl-10 pr-4 py-2.5 bg-brand-surface border border-brand-border rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all"
           />
         </div>
@@ -246,14 +256,14 @@
           <button data-cat="Todos" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-white text-black font-semibold shadow-sm">
             Todos
           </button>
-          <button data-cat="Escritura" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white">
-            Escritura
+          <button data-cat="Publicidad" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white">
+            Publicidad
           </button>
-          <button data-cat="Investigación" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white">
-            Investigación
+          <button data-cat="Redacción" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white">
+            Redacción
           </button>
-          <button data-cat="Estudio" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white">
-            Estudio
+          <button data-cat="Estrategia" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white">
+            Estrategia
           </button>
           <button data-cat="Automatización" class="filter-btn px-4 py-2 rounded-xl text-xs font-medium transition-all bg-brand-surface text-slate-400 border border-brand-border hover:text-white">
             Automatización
@@ -262,7 +272,7 @@
       </div>
     </section>
 
-    <!-- GRID DE WORKFLOWS (INDICADOR 'EN REDACCIÓN' LIMPIO) -->
+    <!-- GRID DE WORKFLOWS (13 PROTOCOLOS POTENTES DE PUBLICIDAD Y CREATIVIDAD) -->
     <section id="workflows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
     </section>
 
@@ -277,11 +287,11 @@
       <div class="max-w-3xl mb-12">
         <span class="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">El Manifiesto</span>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-2 mb-4">
-          No es hacer trampa. <br />
-          <span class="text-slate-500">Es dejar de perder el tiempo en lo mecánico.</span>
+          La IA no tiene buen gusto. <br />
+          <span class="text-slate-500">El buen gusto lo pones tú.</span>
         </h2>
         <p class="text-slate-400 text-sm leading-relaxed">
-          La educación superior está repleta de tareas repetitivas que consumen noches enteras sin desarrollar criterio real. El Atajo nació para desmitificar la inteligencia artificial y convertirla en una palanca de apalancamiento intelectual, no en un sustituto del pensamiento crítico.
+          En el mundo de la publicidad y la comunicación, el peor error es pedirle a la inteligencia artificial que sea creativa por ti: te entregará rimas tontas y clichés que todo el mundo ignora. En El Atajo usamos los modelos como una máquina de velocidad para investigar y estructurar, dejando que el criterio, el tono y la decisión final sean 100% tuyos.
         </p>
       </div>
 
@@ -290,9 +300,9 @@
           <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             01
           </div>
-          <h3 class="text-base font-bold text-white mb-2">Tiempo sobre teoría</h3>
+          <h3 class="text-base font-bold text-white mb-2">Eliminar el bloqueo blanco</h3>
           <p class="text-slate-400 text-xs leading-relaxed">
-            Aprender la historia de las redes neuronales no te devuelve las 4 horas que pierdes formateando un documento o extrayendo datos rotos. Priorizamos la utilidad inmediata sobre el palabreo abstracto.
+            Pasarte horas mirando una hoja en blanco no te hace más creativo; te hace perder tiempo. Usamos la IA para generar 15 ángulos de ataque en segundos y quedarte con los 2 mejores.
           </p>
         </div>
 
@@ -300,19 +310,19 @@
           <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             02
           </div>
-          <h3 class="text-base font-bold text-white mb-2">Criterio antes que copia</h3>
+          <h3 class="text-base font-bold text-white mb-2">Cero textos que huelan a robot</h3>
           <p class="text-slate-400 text-xs leading-relaxed">
-            Prohibido usar IA para redactar textos genéricos que nadie quiere leer. Diseñamos protocolos donde el modelo actúa como un evaluador implacable y analista de soporte. El juicio final siempre es del estudiante.
+            Prohibido usar textos genéricos que dicen "sumérgete en esta experiencia única". Diseñamos instrucciones para hablar como seres humanos reales que compran productos reales.
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
+        <div class="p-6 rounded-2xl bg-brand-surface border border-indigo-500/20 text-indigo-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
           <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             03
           </div>
-          <h3 class="text-base font-bold text-white mb-2">Acceso abierto y directo</h3>
+          <h3 class="text-base font-bold text-white mb-2">Pura utilidad para el día a día</h3>
           <p class="text-slate-400 text-xs leading-relaxed">
-            Sin suscripciones, sin muros de registro y sin cursos de venta de humo. Protocolos claros, probados en entornos reales y listos para ejecutar en un clic.
+            Sin cursos de venta de humo, sin suscripciones forzadas y sin palabreo técnico. Fórmulas directas para resolver tus entregas y campañas a tiempo.
           </p>
         </div>
       </div>
@@ -326,7 +336,7 @@
       <div class="flex items-center gap-3">
         <span class="font-semibold text-slate-300">El Atajo</span>
         <span>—</span>
-        <span>Plataforma de eficiencia académica mediante IA</span>
+        <span>Herramientas prácticas de IA para creativos y profesionales</span>
       </div>
       <div class="flex items-center gap-4">
         <span>Sin registros</span>
@@ -356,12 +366,12 @@
         <div>
           <span class="text-[10px] uppercase font-mono text-slate-500 tracking-wider">El Camino Largo</span>
           <p id="modal-slow-time" class="text-sm font-semibold text-rose-400 mt-0.5"></p>
-          <span class="text-xs text-slate-400">Lectura y redacción manual</span>
+          <span class="text-xs text-slate-400">Bloqueo creativo manual</span>
         </div>
         <div class="border-l border-brand-border/60 pl-4">
           <span class="text-[10px] uppercase font-mono text-slate-500 tracking-wider">Con El Atajo</span>
           <p id="modal-fast-time" class="text-sm font-semibold text-emerald-400 mt-0.5"></p>
-          <span class="text-xs text-slate-400">Ejecución del flujo estructurado</span>
+          <span class="text-xs text-slate-400">Ejecución de fórmula estructurada</span>
         </div>
       </div>
 
@@ -389,176 +399,192 @@
   </div>
 
   <script>
+    // BASE DE DATOS MAESTRA: ENFOCADA EN PUBLICIDAD, CREATIVIDAD Y ESTRATEGIA
     const WORKFLOWS_DATA = [
+      // --- LOS 3 ACTIVOS (MANTENIENDO TUS ARCHIVOS FUNCIONALES) ---
       {
         id: 'wf-01',
         url: 'auditoria-ensayos.html',
         status: 'active',
-        title: 'Auditoría sin piedad de tus ensayos',
-        category: 'Escritura',
+        title: 'Auditoría sin piedad de textos y propuestas',
+        category: 'Redacción',
         timeSaved: '45 min',
         slowTime: '60 min',
         fastTime: '3 min',
         image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80',
-        summary: 'Encuentra las 3 premisas más débiles y los contraargumentos que un profesor te tirará en cara antes de entregar.',
+        summary: 'Encuentra las 3 debilidades de tu texto antes de presentarlo y blinda tu argumento contra objeciones de clientes o profesores.',
         recommendedModel: 'Claude 3.5 Sonnet',
-        prompt: `Actúa como un evaluador académico implacable. Analiza de forma crítica el borrador que te proporcionaré a continuación.
-
-Tu único trabajo es encontrar todas sus fallas antes de que mi profesor lo lea:
-1. Señala las 3 premisas que peor fundamentadas están y por qué carecen de sustento empírico.
-2. Formula 2 contraargumentos sólidos que un evaluador escéptico usaría en mi contra.
-3. Especifica con precisión qué referencias o datos concretos hacen falta para tapar esos huecos.
-
-Sé completamente directo. Cero cumplidos o introducción.
-
-Borrador:
-[PEGA TU TEXTO AQUÍ]`
+        prompt: `Actúa como un evaluador implacable. Analiza de forma crítica este texto y dime sin rodeos cuáles son sus 3 puntos más débiles.`
       },
       {
         id: 'wf-02',
         url: 'desmontar-papers.html',
         status: 'active',
-        title: 'Desmontar papers de 30 páginas',
-        category: 'Investigación',
+        title: 'Desmontar estudios de mercado densos',
+        category: 'Estrategia',
         timeSaved: '60 min',
         slowTime: '90 min',
         fastTime: '4 min',
         image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80',
-        summary: 'Extrae hipótesis, metodología, limitaciones y aplicación real en una matriz limpia sin leer páginas de relleno.',
+        summary: 'Extrae hallazgos, números clave y oportunidades de negocio de reportes de 30 páginas sin leer palabreo de relleno.',
         recommendedModel: 'Claude 3.5 Sonnet / GPT-4o',
-        prompt: `Actúa como un analista de investigación senior. Procesa el siguiente material académico y genera una tabla sinóptica con este esquema estricto:
-
-- Núcleo del Trabajo: Tesis central en una sola frase concisa.
-- Metodología y Muestra: Datos clave del muestreo o procedimiento experimental.
-- Limitaciones Notificadas: Puntos ciegos o sesgos reconocidos en el estudio.
-- Aportación Práctica: Aplicación concreta del hallazgo en el ámbito profesional.
-
-Omite cualquier párrafo narrativo introductorio.
-
-Material:
-[PEGA EL TEXTO AQUÍ]`
+        prompt: `Actúa como un analista de estrategia. Procesa el siguiente reporte y genera una tabla sinóptica con los hallazgos indispensables.`
       },
       {
         id: 'wf-03',
         url: 'simulador-examenes.html',
         status: 'active',
-        title: 'Simulador de parciales con trampas',
-        category: 'Estudio',
+        title: 'Simulador de preguntas difíciles de clientes',
+        category: 'Estrategia',
         timeSaved: '90 min',
         slowTime: '120 min',
         fastTime: '5 min',
         image: 'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?auto=format&fit=crop&w=800&q=80',
-        summary: 'Genera casos prácticos cruzando dos o más temas del programa con preguntas capciosas para evaluar criterio real.',
+        summary: 'Obliga a la IA a hacerte las 5 preguntas más incómodas que un cliente escéptico te haría sobre tu propuesta para ir preparado.',
         recommendedModel: 'GPT-4o',
-        prompt: `Actúa como el profesor titular más exigente de la materia indicada. Tu objetivo es poner a prueba mi comprensión real de los temas sin depender de la memoria mecánica.
-
-Con base en el siguiente temario:
-1. Diseña 3 casos prácticos complejos donde converjan dos o más temas del programa.
-2. Formula para cada caso una pregunta con una opción trampa habitual y argumenta por qué es incorrecta.
-3. Provee los criterios indispensables que definirían una respuesta sobresaliente.
-
-Temario:
-[PEGA TU PROGRAMA AQUÍ]`
+        prompt: `Actúa como un cliente exigente y hazme las preguntas más difíciles posibles para poner a prueba esta idea.`
       },
-      {
-        id: 'wf-04',
-        url: 'arreglar-datos.html',
-        status: 'coming-soon',
-        title: 'Arreglar datos rotos y pasarlos a Excel',
-        category: 'Automatización',
-        timeSaved: '30 min',
-        slowTime: '40 min',
-        fastTime: '1 min',
-        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-        summary: 'Convierte listas mal copiadas de PDFs y datos caóticos en tablas CSV impecables listas para hojas de cálculo.',
-        recommendedModel: 'Cualquier LLM',
-        prompt: `Convierte los datos desestructurados adjuntos en una tabla estructurada en formato CSV delimitada por comas (,).
 
-Criterios:
-- Normaliza los encabezados a minúsculas en formato snake_case.
-- Reemplaza celdas con datos ausentes por "N/A".
-- Corrige inconsistencias tipográficas evidentes y saltos de línea erróneos.
-- Devuelve únicamente el bloque de código con el resultado tabular listo para exportar.
-
-Datos:
-[PEGA LA INFORMACIÓN AQUÍ]`
-      },
-      {
-        id: 'wf-05',
-        url: 'estructurar-diapositivas.html',
-        status: 'coming-soon',
-        title: 'Estructurar diapositivas desde apuntes',
-        category: 'Escritura',
-        timeSaved: '75 min',
-        slowTime: '90 min',
-        fastTime: '5 min',
-        image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80',
-        summary: 'Transforma notas dispersas en un guión de diapositivas con balance de texto, notas para el orador y jerarquía visual.',
-        recommendedModel: 'Claude 3.5 Sonnet',
-        prompt: `Actúa como un diseñador de presentaciones ejecutivas. Convierte el siguiente bloque de notas en un esquema estructurado para una presentación de 10 diapositivas.
-
-Para cada diapositiva especifica:
-- Título conciso (máximo 5 palabras).
-- 3 viñetas con información clave (máximo 12 palabras cada una).
-- Nota para el expositor: qué decir oralmente para expandir el punto sin leer la pantalla.
-
-Notas:
-[PEGA TUS APUNTES AQUÍ]`
-      },
-      {
-        id: 'wf-06',
-        url: 'minutas-clases.html',
-        status: 'coming-soon',
-        title: 'Minutas ejecutivas de clases grabadas',
-        category: 'Estudio',
-        timeSaved: '120 min',
-        slowTime: '120 min',
-        fastTime: '6 min',
-        image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',
-        summary: 'Convierte transcripciones automáticas desordenadas de clases en listas de decisiones, tareas y conceptos evaluables.',
-        recommendedModel: 'GPT-4o / Claude',
-        prompt: `Procesa la siguiente transcripción cruda de una clase universitaria y genera un informe estructurado:
-
-1. Conceptos Fundamentales: Las 3 ideas clave explicadas por el docente con su definición exacta.
-2. Tareas o Fechas Mencionadas: Cualquier entregable, examen o lectura que el profesor haya indicado.
-3. Preguntas Abiertas: Dudas planteadas durante la sesión que podrían ser objeto de examen.
-
-Transcripción cruda:
-[PEGA LA TRANSCRIPCIÓN AQUÍ]`
-      },
+      // --- 10 PROTOCOLOS DE ALTO VALOR EN PUBLICIDAD (COMING SOON) ---
       {
         id: 'wf-07',
         url: '#',
         status: 'coming-soon',
-        title: 'Normalización bibliográfica estricta APA 7ma',
-        category: 'Automatización',
-        timeSaved: '50 min',
+        title: 'Generador de ganchos (Hooks) que frenan el scroll',
+        category: 'Publicidad',
+        timeSaved: '40 min',
         slowTime: '60 min',
         fastTime: '2 min',
-        image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=800&q=80',
-        summary: 'Convierte enlaces, fragmentos y nombres de autores en referencias APA 7ma con cursivas, sangría francesa y DOIs limpios.',
+        image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80',
+        summary: 'Crea 10 aperturas psicológicas para videos de TikTok, Reels o anuncios para atrapar al usuario en los primeros 3 segundos.',
         recommendedModel: 'Claude 3.5 Sonnet',
-        prompt: `Actúa como un bibliotecario académico experto en normas APA 7ma edición. Convierte la siguiente lista desordenada de fuentes en referencias bibliográficas estrictas en formato APA 7ma con sangría y orden alfabético.
-
-Fuentes:
-[PEGA TUS FUENTES AQUÍ]`
+        prompt: ``
       },
       {
         id: 'wf-08',
         url: '#',
         status: 'coming-soon',
-        title: 'Traductor y contextualizador de citas en inglés',
-        category: 'Investigación',
+        title: 'De audios desordenados del cliente a un Brief de 1 página',
+        category: 'Estrategia',
+        timeSaved: '50 min',
+        slowTime: '75 min',
+        fastTime: '3 min',
+        image: 'https://images.unsplash.com/photo-1542744094-3a31727560fa?auto=format&fit=crop&w=800&q=80',
+        summary: 'Pega las notas caóticas del cliente y extrae el objetivo real, el público que compra y la propuesta de valor sin perder el tiempo.',
+        recommendedModel: 'GPT-4o',
+        prompt: ``
+      },
+      {
+        id: 'wf-09',
+        url: '#',
+        status: 'coming-soon',
+        title: 'Transformar características aburridas en beneficios de venta',
+        category: 'Redacción',
         timeSaved: '35 min',
         slowTime: '45 min',
         fastTime: '2 min',
-        image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80',
-        summary: 'Traduce citas académicas en inglés preservando la terminología técnica y evitando traducciones literales o artificiales.',
+        image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80',
+        summary: 'Convierte datos técnicos fríos en razones emocionales que le demuestran al cliente qué gana comprando tu producto.',
+        recommendedModel: 'Claude 3.5 Sonnet',
+        prompt: ``
+      },
+      {
+        id: 'wf-10',
+        url: '#',
+        status: 'coming-soon',
+        title: 'Espionaje ético de competencia: qué están diciendo',
+        category: 'Publicidad',
+        timeSaved: '60 min',
+        slowTime: '90 min',
+        fastTime: '4 min',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+        summary: 'Analiza los anuncios y textos de tus competidores para encontrar los ángulos que ellos están ignorando y atacarlos.',
         recommendedModel: 'Claude 3.5 Sonnet / GPT-4o',
-        prompt: `Traduce la siguiente cita académica del inglés al español técnico académico, preservando el rigor conceptual sin traducciones literales torpes. Provee también una paráfrasis formal lista para insertar en el ensayo.
-
-Cita:
-[PEGA LA CITA EN INGLÉS AQUÍ]`
+        prompt: ``
+      },
+      {
+        id: 'wf-11',
+        url: '#',
+        status: 'coming-soon',
+        title: 'Escáner de dolores reales en comentarios de redes',
+        category: 'Estrategia',
+        timeSaved: '70 min',
+        slowTime: '90 min',
+        fastTime: '3 min',
+        image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80',
+        summary: 'Pega 30 quejas o reseñas de productos y extrae las palabras y frustraciones exactas de la gente para usarlas en tus anuncios.',
+        recommendedModel: 'Claude 3.5 Sonnet',
+        prompt: ``
+      },
+      {
+        id: 'wf-12',
+        url: '#',
+        status: 'coming-soon',
+        title: 'Guión de 5 pasos para presentar ideas y vender el pitch',
+        category: 'Estrategia',
+        timeSaved: '80 min',
+        slowTime: '120 min',
+        fastTime: '5 min',
+        image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80',
+        summary: 'Estructura tus propuestas creativas para que el cliente entienda el retorno de su dinero antes de empezar a opinar sobre los colores.',
+        recommendedModel: 'GPT-4o',
+        prompt: ``
+      },
+      {
+        id: 'wf-13',
+        url: '#',
+        status: 'coming-soon',
+        title: 'Generador de 20 nombres de campaña y conceptos pegajosos',
+        category: 'Publicidad',
+        timeSaved: '45 min',
+        slowTime: '60 min',
+        fastTime: '2 min',
+        image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80',
+        summary: 'Obtén 20 caminos creativos de naming categorizados por estilo (humor, autoridad, rebeldía) para no quedarte con la primera idea.',
+        recommendedModel: 'Claude 3.5 Sonnet',
+        prompt: ``
+      },
+      {
+        id: 'wf-14',
+        url: '#',
+        status: 'coming-soon',
+        title: 'Secuencia de 3 correos para recuperar clientes fríos',
+        category: 'Redacción',
+        timeSaved: '50 min',
+        slowTime: '70 min',
+        fastTime: '3 min',
+        image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80',
+        summary: 'Escribe emails persuasivos con tono humano y sin sonar a spam para reactivar prospectos que dejaron de contestar.',
+        recommendedModel: 'Claude 3.5 Sonnet',
+        prompt: ``
+      },
+      {
+        id: 'wf-15',
+        url: '#',
+        status: 'coming-soon',
+        title: 'Matriz de contenido semanal: 5 pilares sin bloqueo',
+        category: 'Publicidad',
+        timeSaved: '65 min',
+        slowTime: '90 min',
+        fastTime: '4 min',
+        image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80',
+        summary: 'Organiza el contenido de tu marca para toda la semana distribuido en entretener, educar, generar confianza y vender.',
+        recommendedModel: 'GPT-4o / Claude',
+        prompt: ``
+      },
+      {
+        id: 'wf-16',
+        url: '#',
+        status: 'coming-soon',
+        title: 'Reescribir copys comerciales en tono local dominicano',
+        category: 'Redacción',
+        timeSaved: '30 min',
+        slowTime: '45 min',
+        fastTime: '2 min',
+        image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',
+        summary: 'Adapta anuncios fríos traducidos de marcas globales a un español dominicano natural, cercano y que conecte en Santo Domingo y Santiago.',
+        recommendedModel: 'Claude 3.5 Sonnet',
+        prompt: ``
       }
     ];
 
@@ -571,7 +597,6 @@ Cita:
     const searchInput = document.getElementById('search-input');
     const filterButtons = document.querySelectorAll('.filter-btn');
 
-    // RENDER: INDICADOR 'EN REDACCIÓN' LIMPIO EN LA BASE
     function renderCards() {
       const filtered = WORKFLOWS_DATA.filter(wf => {
         const matchesCat = activeCategory === 'Todos' || wf.category === activeCategory;
@@ -591,7 +616,7 @@ Cita:
         const isActive = wf.status === 'active';
         
         return `
-        <article class="card-sheen bg-brand-card border border-brand-border rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:border-brand-accent/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/50" style="animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${idx * 0.08}s both;">
+        <article class="card-sheen bg-brand-card border border-brand-border rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:border-brand-accent/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/50" style="animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${idx * 0.05}s both;">
           <div>
             ${isActive ? `
               <a href="${wf.url}" class="block relative h-44 w-full overflow-hidden bg-slate-900 group">
@@ -641,7 +666,7 @@ Cita:
               <span class="text-emerald-400 font-semibold">Atajo: ${wf.fastTime}</span>
             </div>
 
-            <!-- BOTONES DE ACCIÓN: ACTIVOS TIENEN GUÍA / INACTIVOS DICEN 'EN REDACCIÓN' -->
+            <!-- BOTONES DE ACCIÓN -->
             <div class="flex items-center justify-between border-t border-brand-border/60 pt-3 gap-2">
               ${isActive ? `
                 <button onclick="openModal('${wf.id}')" class="px-3 py-1.5 rounded-lg bg-brand-surface hover:bg-brand-pill text-xs font-medium text-slate-300 transition-colors border border-brand-border" title="Ver prompt rápido">
@@ -738,7 +763,7 @@ Cita:
       const essays = parseInt(calcEssays.value);
       calcPapersVal.textContent = papers;
       calcEssaysVal.textContent = essays;
-      const total = (papers * 1.25 + essays * 1.5).toFixed(1);
+      const total = (papers * 2.0 + essays * 1.5).toFixed(1);
       calculatedHours.textContent = total;
     }
 
