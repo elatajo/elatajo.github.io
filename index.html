@@ -193,7 +193,7 @@
   <!-- CONTENEDOR PRINCIPAL -->
   <main class="max-w-7xl mx-auto px-6 pt-20 pb-28 flex-1 w-full relative z-10">
 
-    <!-- CALCULADORA DE TIEMPO INTERACTIVA (ENFOCADA EN CREATIVIDAD Y PUBLICIDAD) -->
+    <!-- CALCULADORA DE TIEMPO INTERACTIVA -->
     <section id="calculadora" class="mb-24 p-8 rounded-3xl bg-brand-surface/60 border border-brand-border/80 backdrop-blur-xl">
       <div class="flex flex-col lg:flex-row gap-8 items-start lg:items-center justify-between">
         <div class="max-w-md">
@@ -237,7 +237,7 @@
       </div>
     </section>
 
-    <!-- BARRA DE BÚSQUEDA Y FILTROS ADAPTADOS A PUBLICIDAD -->
+    <!-- BARRA DE BÚSQUEDA Y FILTROS -->
     <section id="catalogo" class="space-y-6 mb-12">
       <div class="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
         <div class="relative flex-1 max-w-md">
@@ -272,7 +272,7 @@
       </div>
     </section>
 
-    <!-- GRID DE WORKFLOWS (13 PROTOCOLOS POTENTES DE PUBLICIDAD Y CREATIVIDAD) -->
+    <!-- GRID DE WORKFLOWS -->
     <section id="workflows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
     </section>
 
@@ -282,7 +282,7 @@
       </p>
     </div>
 
-    <!-- SECCIÓN: EL MANIFIESTO -->
+    <!-- SECCIÓN: EL MANIFIESTO (CORRECCIÓN TOTAL: CARD 03 100% ALINEADA) -->
     <section id="manifiesto" class="pt-16 pb-8 border-t border-brand-border/60">
       <div class="max-w-3xl mb-12">
         <span class="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">El Manifiesto</span>
@@ -296,6 +296,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- CARD 01 -->
         <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
           <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             01
@@ -306,6 +307,7 @@
           </p>
         </div>
 
+        <!-- CARD 02 -->
         <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
           <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             02
@@ -316,7 +318,8 @@
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl bg-brand-surface border border-indigo-500/20 text-indigo-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
+        <!-- CARD 03 LIMPIA Y EXACTA -->
+        <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
           <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             03
           </div>
@@ -399,9 +402,8 @@
   </div>
 
   <script>
-    // BASE DE DATOS MAESTRA: ENFOCADA EN PUBLICIDAD, CREATIVIDAD Y ESTRATEGIA
+    // BASE DE DATOS MAESTRA: PUBLICIDAD, CREATIVIDAD Y ESTRATEGIA (CON URLS ESTABLES)
     const WORKFLOWS_DATA = [
-      // --- LOS 3 ACTIVOS (MANTENIENDO TUS ARCHIVOS FUNCIONALES) ---
       {
         id: 'wf-01',
         url: 'auditoria-ensayos.html',
@@ -444,8 +446,6 @@
         recommendedModel: 'GPT-4o',
         prompt: `Actúa como un cliente exigente y hazme las preguntas más difíciles posibles para poner a prueba esta idea.`
       },
-
-      // --- 10 PROTOCOLOS DE ALTO VALOR EN PUBLICIDAD (COMING SOON) ---
       {
         id: 'wf-07',
         url: '#',
@@ -469,7 +469,8 @@
         timeSaved: '50 min',
         slowTime: '75 min',
         fastTime: '3 min',
-        image: 'https://images.unsplash.com/photo-1542744094-3a31727560fa?auto=format&fit=crop&w=800&q=80',
+        // FOTO SUSTITUIDA POR TOMA PERMANENTE Y VERIFICADA
+        image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80',
         summary: 'Pega las notas caóticas del cliente y extrae el objetivo real, el público que compra y la propuesta de valor sin perder el tiempo.',
         recommendedModel: 'GPT-4o',
         prompt: ``
@@ -666,7 +667,7 @@
               <span class="text-emerald-400 font-semibold">Atajo: ${wf.fastTime}</span>
             </div>
 
-            <!-- BOTONES DE ACCIÓN -->
+            <!-- BOTONES DE ACCIÓN: ACTIVOS TIENEN GUÍA / INACTIVOS DICEN 'EN REDACCIÓN' -->
             <div class="flex items-center justify-between border-t border-brand-border/60 pt-3 gap-2">
               ${isActive ? `
                 <button onclick="openModal('${wf.id}')" class="px-3 py-1.5 rounded-lg bg-brand-surface hover:bg-brand-pill text-xs font-medium text-slate-300 transition-colors border border-brand-border" title="Ver prompt rápido">
