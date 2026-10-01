@@ -180,7 +180,7 @@
 
       <div class="flex flex-wrap justify-center items-center gap-4">
         <a href="#catalogo" class="px-7 py-3.5 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-black text-xs sm:text-sm font-bold transition-all shadow-xl shadow-sky-500/20 active:scale-95">
-          Ver Fórmulas de Publicidad
+          Ver Fórmulas Activas
         </a>
         <a href="#calculadora" class="px-7 py-3.5 rounded-xl bg-black/60 hover:bg-black/80 backdrop-blur-md text-white text-xs sm:text-sm font-semibold border border-white/20 transition-all active:scale-95">
           Calcular Horas Ahorradas
@@ -247,7 +247,7 @@
           <input
             id="search-input"
             type="text"
-            placeholder="Buscar por tarea: 'anuncios', 'brief', 'competencia', 'ganchos'..."
+            placeholder="Buscar por tarea: 'anuncios', 'datos', 'brief', 'diapositivas', 'clases'..."
             class="w-full pl-10 pr-4 py-2.5 bg-brand-surface border border-brand-border rounded-xl text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent transition-all"
           />
         </div>
@@ -272,7 +272,7 @@
       </div>
     </section>
 
-    <!-- GRID DE WORKFLOWS -->
+    <!-- GRID DE WORKFLOWS (16 EN TOTAL: 6 ACTIVOS + 10 EN REDACCIÓN) -->
     <section id="workflows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
     </section>
 
@@ -282,7 +282,7 @@
       </p>
     </div>
 
-    <!-- SECCIÓN: EL MANIFIESTO (CORRECCIÓN TOTAL: CARD 03 100% ALINEADA) -->
+    <!-- SECCIÓN: EL MANIFIESTO -->
     <section id="manifiesto" class="pt-16 pb-8 border-t border-brand-border/60">
       <div class="max-w-3xl mb-12">
         <span class="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">El Manifiesto</span>
@@ -296,7 +296,6 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- CARD 01 -->
         <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
           <div class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             01
@@ -307,7 +306,6 @@
           </p>
         </div>
 
-        <!-- CARD 02 -->
         <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
           <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             02
@@ -318,7 +316,6 @@
           </p>
         </div>
 
-        <!-- CARD 03 LIMPIA Y EXACTA -->
         <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
           <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             03
@@ -369,12 +366,12 @@
         <div>
           <span class="text-[10px] uppercase font-mono text-slate-500 tracking-wider">El Camino Largo</span>
           <p id="modal-slow-time" class="text-sm font-semibold text-rose-400 mt-0.5"></p>
-          <span class="text-xs text-slate-400">Bloqueo creativo manual</span>
+          <span class="text-xs text-slate-400">Bloqueo manual</span>
         </div>
         <div class="border-l border-brand-border/60 pl-4">
           <span class="text-[10px] uppercase font-mono text-slate-500 tracking-wider">Con El Atajo</span>
           <p id="modal-fast-time" class="text-sm font-semibold text-emerald-400 mt-0.5"></p>
-          <span class="text-xs text-slate-400">Ejecución de fórmula estructurada</span>
+          <span class="text-xs text-slate-400">Ejecución estructurada</span>
         </div>
       </div>
 
@@ -402,8 +399,9 @@
   </div>
 
   <script>
-    // BASE DE DATOS MAESTRA: PUBLICIDAD, CREATIVIDAD Y ESTRATEGIA (CON URLS ESTABLES)
+    // BASE DE DATOS MAESTRA: 16 PROTOCOLOS (6 ACTIVOS Y 10 EN REDACCIÓN)
     const WORKFLOWS_DATA = [
+      // --- LOS 6 ACTIVOS (TUS ARCHIVOS FÍSICOS LISTOS) ---
       {
         id: 'wf-01',
         url: 'auditoria-ensayos.html',
@@ -447,6 +445,50 @@
         prompt: `Actúa como un cliente exigente y hazme las preguntas más difíciles posibles para poner a prueba esta idea.`
       },
       {
+        id: 'wf-04',
+        url: 'arreglar-datos.html',
+        status: 'active',
+        title: 'Arreglar datos rotos y pasarlos a Excel',
+        category: 'Automatización',
+        timeSaved: '30 min',
+        slowTime: '40 min',
+        fastTime: '1 min',
+        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+        summary: 'Convierte listas mal copiadas de PDFs y datos caóticos en tablas CSV impecables listas para abrir en hojas de cálculo.',
+        recommendedModel: 'Cualquier LLM',
+        prompt: `Convierte los datos desestructurados adjuntos en una tabla estructurada en formato CSV delimitada por comas (,).`
+      },
+      {
+        id: 'wf-05',
+        url: 'estructurar-diapositivas.html',
+        status: 'active',
+        title: 'Estructurar diapositivas desde apuntes',
+        category: 'Redacción',
+        timeSaved: '75 min',
+        slowTime: '90 min',
+        fastTime: '5 min',
+        image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80',
+        summary: 'Transforma notas dispersas en un guión de diapositivas con balance de texto, notas para el orador y jerarquía visual.',
+        recommendedModel: 'Claude 3.5 Sonnet',
+        prompt: `Convierte el siguiente bloque de notas en un esquema estructurado para una presentación de diapositivas de alto impacto.`
+      },
+      {
+        id: 'wf-06',
+        url: 'minutas-clases.html',
+        status: 'active',
+        title: 'Minutas ejecutivas de reuniones y clases grabadas',
+        category: 'Automatización',
+        timeSaved: '120 min',
+        slowTime: '120 min',
+        fastTime: '6 min',
+        image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80',
+        summary: 'Convierte transcripciones automáticas desordenadas de audios de 2 horas en listas de decisiones, tareas y fechas clave.',
+        recommendedModel: 'GPT-4o / Claude',
+        prompt: `Analiza la siguiente transcripción cruda y genera un reporte estructurado de acuerdos, fechas y conceptos principales.`
+      },
+
+      // --- 10 PROTOCOLOS DE PUBLICIDAD EN REDACCIÓN (COMING SOON) ---
+      {
         id: 'wf-07',
         url: '#',
         status: 'coming-soon',
@@ -469,7 +511,6 @@
         timeSaved: '50 min',
         slowTime: '75 min',
         fastTime: '3 min',
-        // FOTO SUSTITUIDA POR TOMA PERMANENTE Y VERIFICADA
         image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80',
         summary: 'Pega las notas caóticas del cliente y extrae el objetivo real, el público que compra y la propuesta de valor sin perder el tiempo.',
         recommendedModel: 'GPT-4o',
