@@ -135,6 +135,7 @@
       </a>
 
       <nav class="hidden md:flex items-center gap-8 text-xs font-medium text-slate-400">
+        <a href="#auditoria-visual" class="hover:text-white transition-colors">Auditoría Visual</a>
         <a href="#catalogo" class="hover:text-white transition-colors">Catálogo de Flujos</a>
         <a href="#calculadora" class="hover:text-white transition-colors">Calculadora de Horas</a>
         <a href="#manifiesto" class="hover:text-white transition-colors">El Manifiesto</a>
@@ -182,8 +183,8 @@
         <a href="#catalogo" class="px-7 py-3.5 rounded-xl bg-brand-accent hover:bg-brand-accentHover text-black text-xs sm:text-sm font-bold transition-all shadow-xl shadow-sky-500/20 active:scale-95">
           Ver Fórmulas Activas
         </a>
-        <a href="#calculadora" class="px-7 py-3.5 rounded-xl bg-black/60 hover:bg-black/80 backdrop-blur-md text-white text-xs sm:text-sm font-semibold border border-white/20 transition-all active:scale-95">
-          Calcular Horas Ahorradas
+        <a href="#auditoria-visual" class="px-7 py-3.5 rounded-xl bg-black/60 hover:bg-black/80 backdrop-blur-md text-white text-xs sm:text-sm font-semibold border border-white/20 transition-all active:scale-95">
+          Ver Comparador Visual (Arrastrar)
         </a>
       </div>
     </div>
@@ -192,6 +193,143 @@
 
   <!-- CONTENEDOR PRINCIPAL -->
   <main class="max-w-7xl mx-auto px-6 pt-20 pb-28 flex-1 w-full relative z-10">
+
+    <!-- LABORATORIO DE DIRECCIÓN DE ARTE FUNCIONAL -->
+    <section id="auditoria-visual" class="mb-28 p-8 sm:p-10 rounded-3xl bg-brand-surface/60 border border-brand-border/80 backdrop-blur-xl">
+      <div class="max-w-3xl mb-8">
+        <span class="text-[11px] font-mono text-sky-400 uppercase tracking-wider font-semibold">Laboratorio de Dirección de Arte</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mt-1 mb-3">
+          Auditoría Visual: El diseño sin criterio vs. El Atajo
+        </h2>
+        <p class="text-slate-400 text-sm leading-relaxed">
+          Arrastra la barra en el centro para comparar. A la izquierda verás la saturación amateur y a la derecha la pieza profesional con jerarquía limpia.
+        </p>
+      </div>
+
+      <!-- SLIDER INTERACTIVO CLIP-PATH -->
+      <div class="relative w-full h-[400px] sm:h-[480px] rounded-2xl overflow-hidden border border-brand-border select-none shadow-2xl bg-[#090A0D]">
+        
+        <!-- CAPA BASE INFERIOR (DISEÑO PULIDO) -->
+        <div class="absolute inset-0 w-full h-full p-8 sm:p-12 flex flex-col justify-between bg-[#0B0D13]">
+          <div class="flex justify-between items-start">
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">
+              ✓ Con El Atajo: Jerarquía y Espacio Negativo
+            </span>
+            <span class="text-xs font-mono text-slate-500">Lectura: 2.5 seg</span>
+          </div>
+
+          <div class="max-w-md my-auto">
+            <span class="text-xs uppercase tracking-widest text-sky-400 font-mono font-bold block mb-2">EDICIÓN LIMITADA</span>
+            <h3 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-4">
+              Menos ruido. <br>Más impacto.
+            </h3>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+              Diseño tipográfico depurado. 40% de espacio negativo para dirigir la vista hacia un solo llamado a la acción comercial.
+            </p>
+            <span class="inline-block px-6 py-2.5 rounded-xl bg-white text-black text-xs font-bold shadow-lg">
+              Comprar Ahora →
+            </span>
+          </div>
+
+          <div class="text-[11px] font-mono text-slate-500 flex gap-4">
+            <span>✓ 1 Sola familia tipográfica</span>
+            <span>·</span>
+            <span>✓ Paleta: 3 tonos</span>
+            <span>·</span>
+            <span>✓ 1 Solo botón</span>
+          </div>
+        </div>
+
+        <!-- CAPA SUPERIOR RECORTADA (ANUNCIO SATURADO) -->
+        <div id="clip-overlay" class="absolute inset-0 w-full h-full p-8 sm:p-12 flex flex-col justify-between bg-[#190C0E] border-r border-sky-400" style="clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);">
+          <div class="flex justify-between items-start">
+            <span class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/30 font-semibold">
+              ✕ Error Típico: Saturación Amateur
+            </span>
+            <span class="text-xs font-mono text-rose-400">Rebote: 85%</span>
+          </div>
+
+          <div class="max-w-lg my-auto space-y-3">
+            <div class="inline-block bg-yellow-400 text-black text-xs font-black px-2 py-0.5 uppercase tracking-tighter">
+              ¡OFERTAZO EXCLUSIVO 50% DESCUENTO!
+            </div>
+            <h3 class="text-2xl sm:text-4xl font-black text-rose-300 leading-tight">
+              ¡COMPRA HOY NUESTRO PRODUCTO INCREÍBLE CON CALIDAD INIGUALABLE!
+            </h3>
+            <p class="text-yellow-200/90 text-xs leading-relaxed">
+              Aceptamos tarjeta, visítanos de 8am a 6pm, síguenos en Facebook e Instagram, contáctanos al WhatsApp abajo para más información detallada.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3 py-1.5 bg-red-600 text-white text-[11px] font-bold">CLICK AQUÍ</span>
+              <span class="px-3 py-1.5 bg-yellow-500 text-black text-[11px] font-bold">INFO AQUÍ</span>
+              <span class="px-3 py-1.5 bg-green-600 text-white text-[11px] font-bold">WHATSAPP</span>
+            </div>
+          </div>
+
+          <div class="text-[11px] font-mono text-rose-400 flex gap-4">
+            <span>✕ 4 Tipografías compitiendo</span>
+            <span>·</span>
+            <span>✕ Cero respiración visual</span>
+            <span>·</span>
+            <span>✕ 3 Botones distintos</span>
+          </div>
+        </div>
+
+        <input 
+          id="visual-slider" 
+          type="range" 
+          min="0" 
+          max="100" 
+          value="50" 
+          class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
+        >
+
+        <div id="visual-handle" class="absolute top-0 bottom-0 pointer-events-none z-20 flex items-center justify-center" style="left: 50%;">
+          <div class="w-0.5 h-full bg-sky-400 shadow-[0_0_12px_#38BDF8]"></div>
+          <div class="absolute w-10 h-10 rounded-full bg-sky-400 text-black font-black text-xs flex items-center justify-center shadow-2xl border-2 border-white">
+            ⟷
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3 CRITERIOS GRÁFICOS -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+        <div class="p-4 rounded-xl bg-brand-card border border-brand-border">
+          <span class="text-sky-400 font-mono text-xs font-bold block mb-1">01. Jerarquía Tipográfica</span>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            De 5 tipografías compitiendo por atención a 1 sola familia con contraste intencional de pesos para lectura sin fatiga.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-brand-card border border-brand-border">
+          <span class="text-emerald-400 font-mono text-xs font-bold block mb-1">02. Espacio Negativo</span>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Eliminamos el miedo al espacio vacío: el aire alrededor del titular guía la mirada directo al llamado a la acción comercial.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl bg-brand-card border border-brand-border">
+          <span class="text-indigo-400 font-mono text-xs font-bold block mb-1">03. Armonía Cromática</span>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Se sustituyó la saturación arbitraria de amarillo y rojo por una paleta estricta de 3 tonos con contraste garantizado.
+          </p>
+        </div>
+      </div>
+
+      <!-- BOTÓN DE ACCIÓN FUNCIONAL: LANZAR EL PROTOCOLO DE AUDITORÍA -->
+      <div class="mt-8 pt-6 border-t border-brand-border/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-xs text-slate-400 text-center sm:text-left">
+          <strong class="text-white">¿Tienes un diseño o boceto propio?</strong> Evalúalo antes de imprimirlo o publicarlo.
+        </div>
+        <button 
+          onclick="openArtDirectionModal()" 
+          class="w-full sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-sky-400 to-indigo-500 hover:from-sky-300 hover:to-indigo-400 text-black text-xs font-extrabold transition-all shadow-lg shadow-sky-500/20 active:scale-95 flex items-center justify-center gap-2"
+        >
+          <span>Ejecutar Protocolo de Auditoría Gráfica (IA de Visión)</span>
+          <span>⚡</span>
+        </button>
+      </div>
+
+    </section>
 
     <!-- CALCULADORA DE TIEMPO INTERACTIVA -->
     <section id="calculadora" class="mb-24 p-8 rounded-3xl bg-brand-surface/60 border border-brand-border/80 backdrop-blur-xl">
@@ -242,7 +380,7 @@
       <div class="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
         <div class="relative flex-1 max-w-md">
           <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7(0) 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
             id="search-input"
@@ -272,7 +410,7 @@
       </div>
     </section>
 
-    <!-- GRID DE WORKFLOWS (16 EN TOTAL: 6 ACTIVOS + 10 EN REDACCIÓN) -->
+    <!-- GRID DE WORKFLOWS (16 EN TOTAL) -->
     <section id="workflows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
     </section>
 
@@ -316,7 +454,7 @@
           </p>
         </div>
 
-        <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
+        <div class="p-6 rounded-2xl bg-brand-surface border border-indigo-500/20 text-indigo-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
           <div class="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs font-bold flex items-center justify-center mb-4">
             03
           </div>
@@ -346,7 +484,57 @@
     </div>
   </footer>
 
-  <!-- MODAL DE FLUJO COMPLETO -->
+  <!-- MODAL ESPECIALIZADO: PROTOCOLO DE AUDITORÍA GRÁFICA (IA DE VISIÓN) -->
+  <div id="art-direction-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-brand-surface border border-sky-500/30 rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex justify-between items-start pb-4 mb-6 border-b border-brand-border">
+        <div>
+          <span class="text-[11px] font-mono uppercase tracking-wider text-sky-400 font-semibold">Tutor de Dirección de Arte</span>
+          <h3 class="text-xl font-bold text-white mt-1">Protocolo de Auditoría de Jerarquía Visual</h3>
+        </div>
+        <button onclick="closeArtDirectionModal()" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-brand-card">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-4 rounded-xl bg-brand-card border border-brand-border mb-6 text-xs text-slate-400 leading-relaxed">
+        <strong class="text-white">Cómo usar este protocolo en 3 pasos:</strong>
+        <ol class="list-decimal list-inside space-y-1 mt-2">
+          <li>Toma una captura de pantalla de tu diseño en Illustrator, Photoshop, Figma o Canva.</li>
+          <li>Abre <strong>Claude 3.5 Sonnet</strong> o <strong>ChatGPT-4o</strong> y adjunta la imagen.</li>
+          <li>Pega la instrucción de abajo para recibir el desglose de jerarquía visual y mapa de lectura en 30 segundos.</li>
+        </ol>
+      </div>
+
+      <div class="mb-6">
+        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Instrucción Maestra de Visión</label>
+        <div class="relative bg-black/70 border border-brand-border rounded-xl p-4">
+          <pre id="art-prompt-text" class="font-mono text-xs text-slate-200 whitespace-pre-wrap leading-relaxed">Actúa como un Director de Arte Senior y Consultor de Percepción Visual de clase mundial. Analiza minuciosamente la imagen de diseño publicitario que acabo de adjuntar.
+
+Entrégame una auditoría gráfica estricta bajo los siguientes 4 puntos:
+1. Mapa de Lectura Ocular: ¿Hacia dónde se dirige el ojo en los primeros 2 segundos y por qué? ¿Sigue un orden de lectura limpio o hay conflicto visual?
+2. Jerarquía Tipográfica: Señala qué textos compiten entre sí y dame las proporciones exactas de tamaño y peso que debo ajustar para crear contraste claro.
+3. Espacio Negativo y Leyes de la Gestalt: Indica qué zonas están saturadas y qué elementos debo eliminar o mover para generar un 30-40% de aire visual.
+4. Las 3 Modificaciones Obligatorias: Enumera 3 cambios milimétricos y concretos que debo hacer de inmediato en mi software de diseño para elevar esta pieza a nivel profesional.
+
+Sé implacable. Cero cumplidos de cortesía. Solo crítica técnica de composición visual.</pre>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-2 border-t border-brand-border/60">
+        <span class="text-xs text-slate-400 font-mono">Compatible con GPT-4o Vision & Claude 3.5</span>
+        <button id="art-copy-btn" onclick="copyArtPrompt()" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 bg-gradient-to-r from-sky-400 to-indigo-500 hover:from-sky-300 hover:to-indigo-400 text-black text-xs font-bold rounded-xl transition-all shadow-lg active:scale-95">
+          <span>Copiar Instrucción de Visión</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL DE FLUJO COMPLETO PARA ARTÍCULOS -->
   <div id="modal-container" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
     <div class="bg-brand-surface border border-brand-border rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
       
@@ -399,9 +587,7 @@
   </div>
 
   <script>
-    // BASE DE DATOS MAESTRA: 16 PROTOCOLOS (6 ACTIVOS Y 10 EN REDACCIÓN)
     const WORKFLOWS_DATA = [
-      // --- LOS 6 ACTIVOS (TUS ARCHIVOS FÍSICOS LISTOS) ---
       {
         id: 'wf-01',
         url: 'auditoria-ensayos.html',
@@ -414,7 +600,7 @@
         image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80',
         summary: 'Encuentra las 3 debilidades de tu texto antes de presentarlo y blinda tu argumento contra objeciones de clientes o profesores.',
         recommendedModel: 'Claude 3.5 Sonnet',
-        prompt: `Actúa como un evaluador implacable. Analiza de forma crítica este texto y dime sin rodeos cuáles son sus 3 puntos más débiles.`
+        prompt: `Actúa como un evaluador implacable. Analiza críticamente este texto y dime sin rodeos cuáles son sus 3 puntos más débiles.`
       },
       {
         id: 'wf-02',
@@ -486,12 +672,10 @@
         recommendedModel: 'GPT-4o / Claude',
         prompt: `Analiza la siguiente transcripción cruda y genera un reporte estructurado de acuerdos, fechas y conceptos principales.`
       },
-
-      // --- 10 PROTOCOLOS DE PUBLICIDAD EN REDACCIÓN (COMING SOON) ---
       {
         id: 'wf-07',
-        url: '#',
-        status: 'coming-soon',
+        url: 'generador-ganchos.html', // <-- CAMBIAR URL
+        status: 'active',              // <-- CAMBIAR A ACTIVE
         title: 'Generador de ganchos (Hooks) que frenan el scroll',
         category: 'Publicidad',
         timeSaved: '40 min',
@@ -504,8 +688,8 @@
       },
       {
         id: 'wf-08',
-        url: '#',
-        status: 'coming-soon',
+        url: 'brief-creativo.html',    // <-- CAMBIAR URL
+        status: 'active',              // <-- CAMBIAR A ACTIVE
         title: 'De audios desordenados del cliente a un Brief de 1 página',
         category: 'Estrategia',
         timeSaved: '50 min',
@@ -708,7 +892,6 @@
               <span class="text-emerald-400 font-semibold">Atajo: ${wf.fastTime}</span>
             </div>
 
-            <!-- BOTONES DE ACCIÓN: ACTIVOS TIENEN GUÍA / INACTIVOS DICEN 'EN REDACCIÓN' -->
             <div class="flex items-center justify-between border-t border-brand-border/60 pt-3 gap-2">
               ${isActive ? `
                 <button onclick="openModal('${wf.id}')" class="px-3 py-1.5 rounded-lg bg-brand-surface hover:bg-brand-pill text-xs font-medium text-slate-300 transition-colors border border-brand-border" title="Ver prompt rápido">
@@ -734,6 +917,50 @@
       `}).join('');
     }
 
+    // CONTROL DEL COMPARADOR VISUAL
+    const visualSlider = document.getElementById('visual-slider');
+    const clipOverlay = document.getElementById('clip-overlay');
+    const visualHandle = document.getElementById('visual-handle');
+
+    if (visualSlider && clipOverlay && visualHandle) {
+      visualSlider.addEventListener('input', (e) => {
+        const val = e.target.value;
+        clipOverlay.style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
+        visualHandle.style.left = `${val}%`;
+      });
+    }
+
+    // MODAL DE DIRECCIÓN DE ARTE (IA DE VISIÓN)
+    const artModal = document.getElementById('art-direction-modal');
+    const artPromptText = document.getElementById('art-prompt-text');
+    const artCopyBtn = document.getElementById('art-copy-btn');
+
+    function openArtDirectionModal() {
+      artModal.classList.remove('hidden');
+    }
+
+    function closeArtDirectionModal() {
+      artModal.classList.add('hidden');
+    }
+
+    function copyArtPrompt() {
+      navigator.clipboard.writeText(artPromptText.innerText).then(() => {
+        artCopyBtn.innerHTML = '<span>¡Instrucción Copiada!</span>';
+        artCopyBtn.classList.replace('from-sky-400', 'from-emerald-400');
+        artCopyBtn.classList.replace('to-indigo-500', 'to-emerald-500');
+        setTimeout(() => {
+          artCopyBtn.innerHTML = '<span>Copiar Instrucción de Visión</span>';
+          artCopyBtn.classList.replace('from-emerald-400', 'from-sky-400');
+          artCopyBtn.classList.replace('to-emerald-500', 'to-indigo-500');
+        }, 2000);
+      });
+    }
+
+    artModal.addEventListener('click', (e) => {
+      if (e.target === artModal) closeArtDirectionModal();
+    });
+
+    // MODAL GENERAL DE WORKFLOWS
     const modal = document.getElementById('modal-container');
     const modalTitle = document.getElementById('modal-title');
     const modalCat = document.getElementById('modal-category');

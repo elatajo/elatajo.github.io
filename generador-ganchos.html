@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganchos que frenan el scroll — El Atajo</title>
+  
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://elatajo.github.io/generador-ganchos.html">
+  <meta property="og:title" content="Ganchos que frenan el scroll — El Atajo">
+  <meta property="og:description" content="10 fórmulas psicológicas para abrir videos y anuncios reteniendo al usuario en los primeros 3 segundos.">
+  <meta property="og:image" content="https://elatajo.github.io/og-image.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2313151A' stroke='%23232732' stroke-width='1.5'/><path d='M10 22L22 10M22 10H14M22 10V18' stroke='%2338BDF8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              background: '#0B0C0E',
+              surface: '#13151A',
+              card: '#181B22',
+              border: '#232732',
+              accent: '#38BDF8',
+              accentHover: '#0EA5E9',
+              pill: '#1E222D'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0B0C0E; font-feature-settings: "cv02", "cv03", "cv04", "cv11"; -webkit-font-smoothing: antialiased; }
+    ::selection { background-color: #38BDF8; color: #0B0C0E; }
+    #webgl-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; opacity: 0.5; }
+    .glass-nav { background: rgba(11, 12, 14, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+  </style>
+</head>
+
+<body class="text-slate-100 min-h-screen flex flex-col font-sans relative overflow-x-hidden">
+  <canvas id="webgl-canvas"></canvas>
+
+  <header class="glass-nav border-b border-brand-border/60 sticky top-0 z-40">
+    <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors group">
+        <svg class="w-4 h-4 text-sky-400 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Volver a El Atajo</span>
+      </a>
+      <div class="flex items-center gap-2 border border-brand-border bg-brand-pill px-3 py-1 rounded-full text-xs font-medium text-slate-300">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span>Protocolo de Publicidad</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-6 pt-12 pb-24 flex-1 w-full relative z-10">
+    <div class="flex flex-wrap items-center gap-3 mb-6">
+      <span class="px-2.5 py-1 rounded-md text-xs font-semibold uppercase tracking-wider bg-brand-surface text-slate-300 border border-brand-border">
+        Publicidad
+      </span>
+      <span class="px-2.5 py-1 rounded-md text-xs font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+        ⚡ Ahorro real: 40 min
+      </span>
+      <span class="text-xs text-slate-500 font-mono">Lectura: 2 min</span>
+    </div>
+
+    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.1] mb-6">
+      Generador de ganchos (Hooks) que frenan el scroll
+    </h1>
+    <p class="text-slate-400 text-lg leading-relaxed mb-8">
+      Cómo crear 10 aperturas psicológicas para videos de TikTok, Reels o anuncios pagos para retener la atención en los primeros 3 segundos sin sonar a vendedor pesado.
+    </p>
+
+    <div class="relative h-72 sm:h-96 w-full rounded-2xl overflow-hidden mb-12 border border-brand-border bg-slate-900">
+      <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80" alt="Creación de contenido para redes sociales" referrerpolicy="no-referrer" class="w-full h-full object-cover opacity-85">
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-background via-transparent to-transparent"></div>
+    </div>
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+      <div class="p-6 rounded-2xl bg-brand-surface border border-brand-border">
+        <div class="text-[11px] font-mono text-rose-400 uppercase tracking-wider font-semibold">El Camino Largo</div>
+        <div class="text-2xl font-bold text-white mt-1 mb-2">~60 minutos</div>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Comenzar los videos diciendo "Hola chicos, hoy les voy a contar...", logrando que el 80% de la gente deslice el video antes del segundo 3.
+        </p>
+      </div>
+      <div class="p-6 rounded-2xl bg-brand-surface border border-sky-500/30">
+        <div class="text-[11px] font-mono text-emerald-400 uppercase tracking-wider font-semibold">Con El Atajo</div>
+        <div class="text-2xl font-bold text-white mt-1 mb-2">~2 minutos</div>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Inyectas el tema de tu video y recibes 10 ganchos clasificados por curiosidad, dolor y beneficio listos para grabar.
+        </p>
+      </div>
+    </section>
+
+    <article class="space-y-8 text-slate-300 text-sm leading-relaxed mb-16">
+      <div class="p-6 rounded-2xl bg-brand-card border border-brand-border">
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-4">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold">Instrucción Maestra</span>
+            <div class="text-xs text-slate-500 mt-0.5">Modelo recomendado: Claude 3.5 Sonnet</div>
+          </div>
+          <button id="copy-btn" onclick="copyArticlePrompt()" class="flex items-center justify-center gap-2 px-4 py-2 bg-brand-accent hover:bg-brand-accentHover text-black text-xs font-semibold rounded-xl transition-all shadow-md active:scale-95 w-full sm:w-auto">
+            <span>Copiar Instrucción</span>
+          </button>
+        </div>
+
+        <div class="bg-black/80 border border-brand-border/80 rounded-xl p-4">
+          <pre id="article-prompt" class="font-mono text-xs text-slate-200 whitespace-pre-wrap leading-relaxed">Actúa como un estratega de contenido viral y copywriter publicitario de alto rendimiento.
+
+Mi producto o tema de video es: [DESCRIBE TU PRODUCTO O TEMA AQUÍ].
+Mi público objetivo es: [A QUIÉN LE HABLAS].
+
+Genera exactamente 10 ganchos (frases de apertura para los primeros 3 segundos de video) divididos en estas 4 categorías psicológicas:
+1. Curiosidad Contraintuitiva (Desafía una creencia popular del nicho).
+2. El Error Costoso (Señala un error que están cometiendo y perdiendo dinero/tiempo).
+3. Transformación Rápida (Promesa concreta de resultado sin el dolor típico).
+4. Pregunta Filtradora (Obliga a la persona indicada a detenerse a escuchar).
+
+Reglas estrictas:
+- Máximo 14 palabras por gancho.
+- Cero saludos tipo "Hola a todos" o "¿Alguna vez te has preguntado...?".
+- Tono humano, directo y natural en español latinoamericano conversacional.</pre>
+        </div>
+      </div>
+    </article>
+
+    <div class="border-t border-brand-border/80 pt-8 flex justify-between items-center">
+      <a href="minutas-clases.html" class="text-xs font-semibold text-slate-400 hover:text-white transition-colors flex items-center gap-1">
+        <span>←</span>
+        <span>Anterior: Minutas de clases</span>
+      </a>
+      <a href="brief-creativo.html" class="text-xs font-semibold text-sky-400 hover:text-sky-300 transition-colors flex items-center gap-1">
+        <span>Siguiente: De audios a Brief</span>
+        <span>→</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="border-t border-brand-border/60 bg-brand-surface/40 py-10 relative z-10">
+    <div class="max-w-4xl mx-auto px-6 flex justify-between items-center text-xs text-slate-500">
+      <span>El Atajo // Herramientas de IA para Publicidad</span>
+      <span>Actualizado semanalmente</span>
+    </div>
+  </footer>
+
+  <script>
+    function copyArticlePrompt() {
+      const promptText = document.getElementById('article-prompt').innerText;
+      const btn = document.getElementById('copy-btn');
+      navigator.clipboard.writeText(promptText).then(() => {
+        btn.innerHTML = '<span>¡Instrucción Copiada!</span>';
+        btn.classList.replace('bg-brand-accent', 'bg-emerald-500');
+        setTimeout(() => {
+          btn.innerHTML = '<span>Copiar Instrucción</span>';
+          btn.classList.replace('bg-emerald-500', 'bg-brand-accent');
+        }, 2000);
+      });
+    }
+    const container = document.getElementById('webgl-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.z = 400;
+    const renderer = new THREE.WebGLRenderer({ canvas: container, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    const particleCount = 500;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount * 3; i += 3) {
+      positions[i] = (Math.random() - 0.5) * 1200;
+      positions[i + 1] = (Math.random() - 0.5) * 1200;
+      positions[i + 2] = (Math.random() - 0.5) * 800;
+    }
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const material = new THREE.PointsMaterial({ size: 2.5, color: 0x38bdf8, transparent: true, opacity: 0.45, blending: THREE.AdditiveBlending });
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+    function animateWebGL() { requestAnimationFrame(animateWebGL); particles.rotation.y += 0.0004; renderer.render(scene, camera); }
+    animateWebGL();
+    window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+  </script>
+</body>
+</html>
